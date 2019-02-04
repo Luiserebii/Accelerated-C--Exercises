@@ -1,0 +1,7 @@
+
+
+0-1. What does the following statement do?
+	3 + 4;
+
+Operator sums operands 3 and 4, compiler reaches semicolon, and discards the value (7).
+
