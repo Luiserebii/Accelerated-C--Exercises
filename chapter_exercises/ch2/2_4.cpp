@@ -39,44 +39,26 @@ int main()
    for(int r = 0; r != rows; ++r){
       //string::size_type c = 0;
 
-           //If we're in the first or row before last...
+            //If we're in the first or row before last...
             if(r == 0 || r == rows - 1){
-               for(int i = 0; i < cols; ++i){
-                  cout << "*";
-               }
+
+               cout << std::string(cols, '*');
 
                //Make the invariant true to exit
                //c = cols;
 
             //Otherwise, if we're in the row where we just print a ton of spaces...
             } else if(r != rows/2){
-               //Print first star
-               cout << "*";
-               //...and all the spaces...
-               for(int i = 0; i < cols - 2; ++i){
-                  cout << " ";
-               }
-               //And, close it
-               cout << "*";
+               //Print first star, ...and all the spaces... and, close it
+               cout << "*" << std::string(cols - 2, ' ') << "*";
 
-           } else {
-                //Print first star
-               cout << "*";
-               //...and the first batch of margin...
-               for(int i = 0; i < side_pad; ++i){
-                  cout << " ";
-               }
-               cout << greeting;
-               //...and the second batch of margin...
-               for(int i = 0; i < side_pad; ++i){
-                  cout << " ";
-               }
-               //And, close it
-               cout << "*";
+            } else {
+                //Print first star, ...and the first batch of margin... and the second batch... and, close it
+               cout << "*" << std::string(side_pad, ' ') << greeting << std::string(side_pad, ' ') << "*";
               
-           }
+            }
 
-           //Thus, the while loop is removed as we only need to iterate through the rows. We just print x per row, and move on.
+            //Thus, the while loop is removed as we only need to iterate through the rows. We just print x per row, and move on.
 
       cout << endl;
 
