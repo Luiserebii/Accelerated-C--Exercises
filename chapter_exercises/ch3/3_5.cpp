@@ -35,7 +35,46 @@ int main()
    //Loop asking for student
    while(moreStudents){
       
+      /* MAIN LOGIC */
 
+      //Query name of student
+      //Append name to vector
+      cout << "Kindly enter the student's name: " << endl;
+
+      string student;
+      cin >> student;
+      studentNames.push_back(student);
+      
+      //Query midterm and final exam grades
+      cout << "And, the student's midterm and final exam grades: " << endl;
+      
+      double midterm, final;
+      cin >> midterm >> final;
+
+      //Query list of homework grades
+      //Create the sum
+      //Keep count of number of grades
+      cout << "Finally, pass me the list of the student's homework grades, trailed by an end-of-file: " << endl;
+
+      double homeworkSum = 0;
+      int homeworkCount = 0;
+      double homeworkGrade;
+
+      while(cin >> homeworkGrade){
+         homeworkSum += homeworkGrade;
+         ++homeworkCount;
+      }
+
+      double homeworkSumGrade = homeworkSum / homeworkCount;
+      
+      //Calculate final grade, and...
+      double finalGrade = midterm * 0.2 + final * 0.4 + homeworkSumGrade * 0.4;
+
+      //Append to grades vector
+      grades.push_back(finalGrade);
+
+
+      /* END OF MAIN LOGIC */
 
       cout << "Need to input more students? (Type \"y\", \"Y\", \"yes\" for yes, all other input considered as a no.)" << endl;
       string response;
@@ -63,6 +102,12 @@ int main()
    cout << "That's all bitch" << endl;
 
 }
+
+
+
+
+
+
 
 
 
