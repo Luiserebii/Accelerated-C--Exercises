@@ -50,7 +50,6 @@ int main()
       
       double midterm, final;
       cin >> midterm >> final;
-cout << "MIDTERM RECEIVED: " << midterm << "FINAL RECEIVED: " << final;
       //Query list of homework grades
       //Create the sum
       //Keep count of number of grades
@@ -63,11 +62,18 @@ cout << "MIDTERM RECEIVED: " << midterm << "FINAL RECEIVED: " << final;
       while(cin >> homeworkGrade){
          homeworkSum += homeworkGrade;
          ++homeworkCount;
-         cout << "FLAG LOOP";
+         cout << "FLAG LOOP" << endl;
       }
+      /*
+      TODO: IMPORTANT
+ 
+      The line below solved our worries; I imagined that we might need to clear the stream to keep going. However, why is this the case? Is it because the stream keeps the internal value of end of file? I used what I read from Ch. 4, but it's not 100% clear to me why, since EOF isn't necessarily an error... Also, using the technique (Enter) for regular reading doesn't do this... we need to read about the stream more.
+      */
+
+      cin.clear();
 
       double homeworkSumGrade = homeworkSum / homeworkCount;
-      cout << "FLAG 1"; 
+      cout << "FLAG 1: WE ARE CLEAR FOR THE LOOP!" << endl << endl; 
       //Calculate final grade, and...
       double finalGrade = midterm * 0.2 + final * 0.4 + homeworkSumGrade * 0.4;
 
