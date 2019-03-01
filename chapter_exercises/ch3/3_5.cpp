@@ -50,7 +50,7 @@ int main()
       
       double midterm, final;
       cin >> midterm >> final;
-
+cout << "MIDTERM RECEIVED: " << midterm << "FINAL RECEIVED: " << final;
       //Query list of homework grades
       //Create the sum
       //Keep count of number of grades
@@ -63,10 +63,11 @@ int main()
       while(cin >> homeworkGrade){
          homeworkSum += homeworkGrade;
          ++homeworkCount;
+         cout << "FLAG LOOP";
       }
 
       double homeworkSumGrade = homeworkSum / homeworkCount;
-      
+      cout << "FLAG 1"; 
       //Calculate final grade, and...
       double finalGrade = midterm * 0.2 + final * 0.4 + homeworkSumGrade * 0.4;
 
@@ -84,7 +85,7 @@ int main()
       //At end, check if still has more students
       //set bool to false if input is not "y, Y, yes"
       
-      if(!(response == 'y' || response == 'Y' || response == "yes" || response == "Yes" || response == "YES")){
+      if(!(response == "y" || response == "Y" || response == "yes" || response == "Yes" || response == "YES")){
          moreStudents = false;
       }
 
