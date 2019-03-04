@@ -6,7 +6,7 @@
 #include "student_info.h"
 
 using std::domain_error;
-
+using std::vector;
 
 //grade the struct
 double grade(const Student_info& s){

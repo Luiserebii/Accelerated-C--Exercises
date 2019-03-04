@@ -8,6 +8,15 @@
 #include "student_info.h"
 #include "grade.h"
 
+/*
+
+Using our custom header files, the headers, and thus function declarations,
+are copied in.
+
+
+Run "g++ *.cpp" to compile them all together!
+
+*/
 
 
 using std::cout;
