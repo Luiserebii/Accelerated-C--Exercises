@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <stdexcept>
+#include <algorithm>
+
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+using std::string;
+using std::vector;
+using std::max;
+
+using std::domain_error;
+
+//double median(vector<double> vec);
+
+double median(vector<double> vec){
+
+   //For simplicity, define the vector<double>::size_type as vec_sz
+   typedef vector<double>::size_type vec_sz;
+
+   vec_sz size = vec.size();
+   if (size == 0) {
+      throw domain_error("median of an empty vector");
+   }
+ 
+   sort(vec.begin(), vec.end());
+
+   vec_sz mid = size/2;
+   
+   return size % 2 == 0 ? (vec[mid] + vec[mid-1]) / 2 : vec[mid];
+
+}
+
