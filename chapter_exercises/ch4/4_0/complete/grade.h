@@ -1,5 +1,5 @@
-#ifndef GUARD_grade.h
-#define GUARD_grade.h
+#ifndef GUARD_grade
+#define GUARD_grade
 
 /*=============================================*/
 

@@ -21,7 +21,6 @@ using std::setprecision;
 
 using std::domain_error;
 
-
 int main() 
 {
 
