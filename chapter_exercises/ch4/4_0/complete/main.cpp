@@ -4,6 +4,11 @@
 #include <vector>
 #include <algorithm>
 
+#include "median.h"
+#include "student_info.h"
+#include "grade.h"
+
+
 
 using std::cout;
 using std::cin;
@@ -15,10 +20,6 @@ using std::max;
 using std::setprecision;
 
 using std::domain_error;
-
-double grade(const Student_info& s);
-double grade(double midterm, double final, const vector<double>& hw);
-double grade(double midterm, double final, double homework);
 
 
 int main() 
@@ -67,26 +68,4 @@ int main()
    return 0;
    
 }
-
-
-//grade the struct
-double grade(const Student_info& s){
-   return grade(s.midterm, s.final, s.homework);
-}
-
-//grade the two doubles and vector passed
-double grade(double midterm, double final, const vector<double>& hw){
-   if (hw.size() == 0){
-      throw domain_error("student has done no homework");
-   }
-   return grade(midterm, final, median(hw));
-}
-
-//grade the three doubles passed
-double grade(double midterm, double final, double homework)
-{
-   return 0.2 * midterm + 0.4 * final + 0.4 * homework;
-}
-
-
 
