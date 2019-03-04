@@ -26,6 +26,7 @@ std::istream& read(std::istream& id, Student_info& s);
 std::istream& read_hw(std::istream& in, vector<double>& hw);
 
 double grade(const Student_info& s);
+double grade(double midterm, double final, const vector<double>& hw);
 double grade(double midterm, double final, double homework);
 
 bool compare(const Student_info& x, const Student_info& y);
@@ -33,14 +34,23 @@ double median(vector<double> vec);
 
 int main() 
 {
-   
+
+   //Create a vector Student_info struct objects   
    vector<Student_info> students;
+
+   //Record object we will use for pass-by-reference ("temporary")
    Student_info record;
    string::size_type maxlen = 0;
    
    // read and store all the records, and find the length of the longest name
+   //While the istream obj from read() tells us its, ok,
    while(read(cin, record)){
+      //After one "read" pass (i.e. one read() exec, or is >> s.name >> s.midterm >> s.final into one read_hw() exec...)
+
+      //Set maxlength to longest name we can find
       maxlen = max(maxlen, record.name.size());
+
+      //Add the record
       students.push_back(record);
    }
 
@@ -49,7 +59,7 @@ int main()
 
    for(vector<Student_info>::size_type i = 0; i < students.size(); ++i){
       // write the name, padded on the right to maxlen + 1 characters
-      cout << students[i].name << string(maxlen + 1 - students[i].name.size());
+      cout << students[i].name << string(maxlen + 1 - students[i].name.size(), ' ');
 
       // compute and write the grade
       try {
@@ -86,7 +96,8 @@ std::istream& read_hw(std::istream& in, vector<double>& hw){
          hw.push_back(x);
       }
 
-      // clear the stream so that input will owrk for the next student
+      // clear the stream so that input will work for the next student
+      //last line in the pattern, but could we also put this at the end of read...? I guess no point if modular, but... hmm.
       in.clear();
 
    }
@@ -96,6 +107,13 @@ std::istream& read_hw(std::istream& in, vector<double>& hw){
 
 double grade(const Student_info& s){
    return grade(s.midterm, s.final, s.homework);
+}
+
+double grade(double midterm, double final, const vector<double>& hw){
+   if (hw.size() == 0){
+      throw domain_error("student has done no homework");
+   }
+   return grade(midterm, final, median(hw));
 }
 
 double grade(double midterm, double final, double homework)
