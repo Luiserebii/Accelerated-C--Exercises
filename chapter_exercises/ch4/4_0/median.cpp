@@ -3,18 +3,10 @@
 #include <stdexcept>
 #include <algorithm>
 
+#include "median.h"
 
-using std::cout;
-using std::cin;
-using std::endl;
-
-using std::string;
 using std::vector;
-using std::max;
-
 using std::domain_error;
-
-//double median(vector<double> vec);
 
 double median(vector<double> vec){
 

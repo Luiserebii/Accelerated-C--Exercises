@@ -22,15 +22,10 @@ struct Student_info {
 };
 
 
-std::istream& read(std::istream& id, Student_info& s);
-std::istream& read_hw(std::istream& in, vector<double>& hw);
-
 double grade(const Student_info& s);
 double grade(double midterm, double final, const vector<double>& hw);
 double grade(double midterm, double final, double homework);
 
-bool compare(const Student_info& x, const Student_info& y);
-double median(vector<double> vec);
 
 int main() 
 {
@@ -80,36 +75,6 @@ int main()
 }
 
 
-std::istream& read(std::istream& is, Student_info& s){
-   // read and store the student's name and midterm and final exam grades
-   //Read into Student_info name, midterm, final vars
-   is >> s.name >> s.midterm >> s.final;
-
-   //Read into Student_info homework vector var
-   read_hw(is, s.homework); // read and store all the student's homework grades
-   return is;
-}
-
-std::istream& read_hw(std::istream& in, vector<double>& hw){
-   if(in) {
-      // get rid of previous contents
-      hw.clear();
-
-      // read homework grades
-      double x;
-      while (in >> x) {
-         hw.push_back(x);
-      }
-
-      // clear the stream so that input will work for the next student
-      //last line in the pattern, but could we also put this at the end of read...? I guess no point if modular, but... hmm.
-      in.clear();
-
-   }
-   return in;
-}
-
-
 //grade the struct
 double grade(const Student_info& s){
    return grade(s.midterm, s.final, s.homework);
@@ -129,34 +94,5 @@ double grade(double midterm, double final, double homework)
    return 0.2 * midterm + 0.4 * final + 0.4 * homework;
 }
 
-
-double median(vector<double> vec){
-
-   //For simplicity, define the vector<double>::size_type as vec_sz
-   typedef vector<double>::size_type vec_sz;
-
-   vec_sz size = vec.size();
-   if (size == 0) {
-      throw domain_error("median of an empty vector");
-   }
- 
-   sort(vec.begin(), vec.end());
-
-   vec_sz mid = size/2;
-   
-   return size % 2 == 0 ? (vec[mid] + vec[mid-1]) / 2 : vec[mid];
-
-}
-
-
-/*
- * Student_info compare util
- *
- */
-
-//Bool result is if x is less than y, or 1st less than 2nd; therefore, true values will assume x should come first
-bool compare(const Student_info& x, const Student_info& y){
-   return x.name < y.name;
-}
 
 
