@@ -23,10 +23,14 @@ using std::vector;
 struct wordOccurence {
    string word;
    int count;
-}
+};
  
+//typedef vector<wordOccurence>::size_type vec_size;
+typedef int vec_size;
+
 vector<string> istreamToVector(istream &is);
 int wordExists(vector<wordOccurence>, string);
+void printWordOcc(vector<wordOccurence>);
 
 int main(){
 
@@ -35,10 +39,8 @@ int main(){
    //Number of words count
    cout << "NUMBER OF WORDS IN INPUT: " << wordInput.size();
 
-   //Word occurence count
-   
+   //Word occurence count   
    vector<wordOccurence> wordOcc;
-   typedef vec_size vector<wordOccurence>::size_type;
 
    for(vec_size i = 0; i < wordInput.size(); i++) {
       //if string input thing doesn't exist
@@ -46,11 +48,19 @@ int main(){
       //else, add to count
 
       int exists = wordExists(wordOcc, wordInput[i]);
-      exists == -1 ? wordOcc.push_back(wordInput[i], 1) : wordOcc[exists].count++;
+      if(exists == -1){
+         wordOccurence wo;
+         wo.word = wordInput[i];
+         wo.count = 1;
+
+         wordOcc.push_back(wo);
+      } else {
+         wordOcc[exists].count++;
+      }
      
    } 
-
-   
+ 
+   printWordOcc(wordOcc);   
 
 }
 
@@ -72,12 +82,20 @@ vector<string> istreamToVector(istream &is){
 
 int wordExists(vector<wordOccurence> wordOcc, string word){
 
-   typedef vec_size vector<wordOccurence>::size_type;
-   for(vec_size i = 0; i < wordOcc.size(); i++)}{
-      if(wordOcc[i] == word){
+   for(vec_size i = 0; i < wordOcc.size(); i++){
+      if(wordOcc[i].word == word){
          return i;
       }
    }
 
    return -1;
 }
+
+void printWordOcc(vector<wordOccurence> wordOcc){
+
+   for(vec_size i = 0; i < wordOcc.size(); i++){
+      cout << i << " WORD:     " << wordOcc[i].word << "   COUNT:   " << wordOcc[i].count << endl; 
+   }
+
+}
+
