@@ -15,12 +15,6 @@ using std::max;
 using std::setprecision;
 
 using std::domain_error;
-struct Student_info {
-   string name;
-   double midterm, final;
-   vector<double> homework;
-};
-
 
 double grade(const Student_info& s);
 double grade(double midterm, double final, const vector<double>& hw);
