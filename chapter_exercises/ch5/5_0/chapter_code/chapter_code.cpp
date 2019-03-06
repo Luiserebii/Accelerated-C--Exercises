@@ -79,13 +79,52 @@ vector<string> frame(const vector<string>& v){
 
 }
 
-/*
+
 vector<string> vcat(const vector<string>& top, const vector<string>& bottom){
 
+   vector<string> ret = top;
+
+   //Add bottom
+   for(vector<string>::const_iterator it = bottom.begin(); it != bottom.end(); ++it){
+      ret.push_back(*it);
+   }
+
+   return ret;
 }
+
 
 vector<string> hcat(const vector<string>& left, const vector<string>& right){
 
+   vector<string> ret;
+
+   //Add 1 to leave a one-space margin between squares
+   string::size_type width1 = width(left) + 1;
+
+   vector<string>::size_type i = 0, j = 0;
+
+   while(i != left.size() || j != right.size()){
+
+      //Construct new string to hold characters from both pictures
+      string s;
+
+      //Copy a row from the left-hand side, if there is one
+      if(i != left.size())
+         s = left[i++];
+
+      //Pad to full width
+      s += string(width1 - s.size(), ' ');
+
+      //Copy a row from the right-hand side, if there is one
+      if(j != right.size())
+         s += right[j++];
+
+      //Finally, add the row to the vector
+      ret.push_back(s);
+
+   }
+
+   return ret;
+
 }
 
-*/
+
