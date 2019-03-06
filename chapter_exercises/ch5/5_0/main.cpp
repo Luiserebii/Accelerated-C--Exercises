@@ -26,10 +26,44 @@ int main() {
    vector<Student_info> failing1 = v1.extract_fails(passing1);
 
  
-   printStudentVector(passing1, "PASSING:  ");
+   printStudentVector(passing1, "V1 - PASSING:  ");
    cout << endl;
 
-   printStudentVector(failing1, "FAILING:  ");
+   printStudentVector(failing1, "V1 - FAILING:  ");
+   cout << endl << endl;
+
+
+   /* v2 */
+
+   version2 v2;
+
+   vector<Student_info> passing2 = {s1, s2, s3, s4};
+   vector<Student_info> failing2 = v2.extract_fails(passing2);
+
+ 
+   printStudentVector(passing2, "V2 - PASSING:  ");
+   cout << endl;
+
+   printStudentVector(failing2, "V2 - FAILING:  ");
+   cout << endl << endl;
+
+
+   /* v3 */
+
+   version3 v3;
+
+   vector<Student_info> passing3 = {s1, s2, s3, s4};
+   vector<Student_info> failing3 = v3.extract_fails(passing3);
+
+ 
+   printStudentVector(passing3, "V3 - PASSING:  ");
+   cout << endl;
+
+   printStudentVector(failing3, "V3 - FAILING:  ");
+   cout << endl << endl;
+
+
+
 
 }
 
