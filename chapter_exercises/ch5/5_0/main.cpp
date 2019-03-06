@@ -10,6 +10,9 @@ using std::vector;
 using std::cout;
 using std::endl;
 
+void printStudentVector(vector<Student_info> stdVec, string str);
+
+
 int main() {
 
    Student_info s1 = { "Floofy", 100, 100, {100, 100, 100} }; 
@@ -19,14 +22,26 @@ int main() {
 
    version1 v1;
 
-   vector<Student_info> passing = {s1, s2, s3, s4};
-   vector<Student_info> failing = v1.extract_fails(passing);
-    
+   vector<Student_info> passing1 = {s1, s2, s3, s4};
+   vector<Student_info> failing1 = v1.extract_fails(passing1);
+
+ 
+   printStudentVector(passing1, "PASSING:  ");
+   cout << endl;
+
+   printStudentVector(failing1, "FAILING:  ");
+
+}
+
+
+
+
+void printStudentVector(vector<Student_info> stdVec, string str) {
+
    typedef vector<Student_info>::const_iterator student_iter;
 
-   for(student_iter iter = passing.begin(); iter < passing.end(); ++iter){
-      cout << "PASSING STUDENTS: " << (*iter).name << endl;
-
+   for(student_iter iter = stdVec.begin(); iter < stdVec.end(); ++iter){
+      cout << str << (*iter).name << endl;
    }
 
 }
