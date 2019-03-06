@@ -1,16 +1,20 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <list>
 
 #include "chapter_code.h"
 
 using std::string;
 using std::vector;
+using std::list;
 
 using std::cout;
 using std::endl;
 
 void printStudentVector(vector<Student_info> stdVec, string str);
+void printStudentList(list<Student_info> stdList, string str);
+
 
 
 int main() {
@@ -62,6 +66,20 @@ int main() {
    printStudentVector(failing3, "V3 - FAILING:  ");
    cout << endl << endl;
 
+   /* v4 */
+
+   version4 v4;
+
+   list<Student_info> passing4 = {s1, s2, s3, s4};
+   list<Student_info> failing4 = v4.extract_fails(passing4);
+
+ 
+   printStudentList(passing4, "V4 - PASSING:  ");
+   cout << endl;
+
+   printStudentList(failing4, "V4 - FAILING:  ");
+   cout << endl << endl;
+
 
 
 
@@ -75,6 +93,16 @@ void printStudentVector(vector<Student_info> stdVec, string str) {
    typedef vector<Student_info>::const_iterator student_iter;
 
    for(student_iter iter = stdVec.begin(); iter < stdVec.end(); ++iter){
+      cout << str << (*iter).name << endl;
+   }
+
+}
+
+void printStudentList(list<Student_info> stdList, string str) {
+
+   typedef list<Student_info>::const_iterator student_iter;
+
+   for(student_iter iter = stdList.begin(); iter != stdList.end(); ++iter){
       cout << str << (*iter).name << endl;
    }
 

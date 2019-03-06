@@ -4,6 +4,7 @@
 /*================================================*/
 
 #include <vector>
+#include <list>
 #include "lib/student_lib.h"
 
 
@@ -86,6 +87,31 @@ class version3 {
 
 };
 
+class version4 {
+
+   public:
+
+      std::list<Student_info> extract_fails(std::list<Student_info>& students){
+
+         std::list<Student_info> fail;
+         std::list<Student_info>::iterator iter = students.begin();
+
+
+         while(iter != students.end()) {
+            if(fgrade(*iter)) {
+               fail.push_back(*iter);
+               iter = students.erase(iter);
+            } else
+               ++iter;
+         }
+
+
+         return fail;
+
+      }
+
+
+};
 
 
 
