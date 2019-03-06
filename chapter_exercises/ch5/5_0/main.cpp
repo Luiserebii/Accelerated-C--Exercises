@@ -3,7 +3,7 @@
 #include <vector>
 #include <list>
 
-#include "chapter_code.h"
+#include "chapter_code/chapter_code.h"
 
 using std::string;
 using std::vector;

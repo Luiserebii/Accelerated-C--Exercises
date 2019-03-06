@@ -2,7 +2,7 @@
 
 MAIN=$1
 LIB=lib
-CHAPTER_CODE=chapter_code.cpp
+CHAPTER_CODE=chapter_code/chapter_code.cpp
 
 
 #Default compilation to main.cpp if nothing specified
@@ -14,4 +14,4 @@ fi
 
 #The actual execution:
 
-g++ -std=c++11 $MAIN $LIB/*.cpp
+g++ -std=c++11 $MAIN $LIB/*.cpp $CHAPTER_CODE
