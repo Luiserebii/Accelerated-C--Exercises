@@ -15,9 +15,25 @@ using std::endl;
 void printStudentVector(vector<Student_info> stdVec, string str);
 void printStudentList(list<Student_info> stdList, string str);
 
+void testExtractFails();
 
 
 int main() {
+
+   testExtractFails();
+
+
+
+
+
+}
+
+
+
+
+
+
+void testExtractFails() {
 
    Student_info s1 = { "Floofy", 100, 100, {100, 100, 100} }; 
    Student_info s2 = { "Doot Doot", 0, 0, {60, 50}};
@@ -84,8 +100,6 @@ int main() {
 
 
 }
-
-
 
 
 void printStudentVector(vector<Student_info> stdVec, string str) {
