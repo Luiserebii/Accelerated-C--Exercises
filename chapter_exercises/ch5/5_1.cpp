@@ -41,6 +41,7 @@ the phrase back together, and writing it properly formatted.
 */
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -48,6 +49,7 @@ the phrase back together, and writing it properly formatted.
 using std::cin;
 using std::cout;
 using std::endl;
+using std::setw;
 
 using std::istream;
 using std::vector;
@@ -61,8 +63,7 @@ void rotate(string& str);
 bool compareRotations(const string& a, const string& b);
 string getRotatedEnd(const string& str);
 string getRotatedBeginning(const string& str);
-string getRotatedBeginning(const string& str);
-
+void printRotatedVector(const vector<string>& v);
 
 int main() {
    
@@ -151,7 +152,7 @@ string getRotatedEnd(const string& str){
 
    //The end is considered the first piece before the &
    if(str.find(delimiter) != 0){
-      string strEnd = a.substr(0, str.find("&"));
+      string strEnd = str.substr(0, str.find("&"));
    } else {
       string strEnd = "";
    }
@@ -167,7 +168,7 @@ string getRotatedBeginning(const string& str){
 
    //The end is considered the first piece before the &
    if(str.find(delimiter) != 0){
-      string strBeg = a.substr(str.find("&") + 1);
+      string strBeg = str.substr(str.find("&") + 1);
    } else {
       string strBeg = "";
    }
@@ -179,7 +180,7 @@ string getRotatedBeginning(const string& str){
 
 void printRotatedVector(const vector<string>& v){
 
-   typedef vector::<string>::iterator v_iter;
+   typedef vector<string>::iterator v_iter;
    typedef string::size_type str_type;
 
    //Find greatest length for beg and end
@@ -187,10 +188,10 @@ void printRotatedVector(const vector<string>& v){
    str_type max_len_end = 0;   
 
    for(v_iter it = v.begin(); it != v.end(); ++it){
-      max_len_beg < getRotatedBeginning(*it) ? max_len_beg = getRotatedBeginning(*it)
-                                             : max_len_beg;
-      max_len_end < getRotatedEnd(*it) ? max_len_end = getRotatedBeginning(*it)
-                                       : max_len_end;      
+      max_len_beg < getRotatedBeginning(*it).size() ? max_len_beg = getRotatedBeginning(*it).size()
+                                                    : max_len_beg;
+      max_len_end < getRotatedEnd(*it).size() ? max_len_end = getRotatedBeginning(*it).size()
+                                                    : max_len_end;      
    }
 
    //Now, loop through to print based on max_len:
