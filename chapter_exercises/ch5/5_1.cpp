@@ -58,7 +58,7 @@ using std::string;
 using std::max;
 
 vector<string> readToRotations(istream& is);
-vector<string> generateRotations(string str);
+vector<string> generateRotations(vector<string>& rotations, string str);
 void rotate(string& str);
 bool compareRotations(const string& a, const string& b);
 string getRotatedEnd(const string& str);
@@ -89,11 +89,18 @@ int main() {
    //Read the rotations
    vector<string> rotations = readToRotations(cin);
 
+
+   cout << "ROTATIONS READ" << endl;
    //Sort them
    sort(rotations.begin(), rotations.end(), compareRotations);
 
+   for(int i = 0; i < rotations.size(); ++i) cout << rotations[i] << endl;
+
+
+   cout << "ROTATIONS SORTED" << endl;
    //Print them
    printRotatedVector(rotations);
+   cout << "ROTATIONS PRINTED" << endl;
    
 }
 
@@ -105,13 +112,14 @@ vector<string> readToRotations(istream& is){
    while(getline(is, line)){
       generateRotations(rotations, line);
    }
-   
+   return rotations;   
 }
 
 
 //Let's just take this as a copy, since we'll be manipulating this
 vector<string> generateRotations(vector<string>& rotations, string str){
-   
+
+   str += "&";   
    //Keep track of initial state
    string init = str;
    rotations.push_back(init);
@@ -152,9 +160,9 @@ string getRotatedEnd(const string& str){
 
    //The end is considered the first piece before the &
    if(str.find(delimiter) != 0){
-      string strEnd = str.substr(0, str.find("&"));
+      strEnd = str.substr(0, str.find("&"));
    } else {
-      string strEnd = "";
+      strEnd = "";
    }
 
    return strEnd;
@@ -167,11 +175,14 @@ string getRotatedBeginning(const string& str){
    string strBeg;
 
    //The end is considered the first piece before the &
+   //cout << "ISHERE:  " << str.find(delimiter) << endl;
+   //cout << "SIZE:   " << str.size() << endl;
    if(str.find(delimiter) != 0){
-      string strBeg = str.substr(str.find("&") + 1);
+      strBeg = str.substr(str.find(delimiter) + 1);
    } else {
-      string strBeg = "";
+      strBeg = "";
    }
+   //cout << "STR: " << str << "ROTATEDBEGINNING:   " << strBeg;
 
    return strBeg;
 
@@ -180,7 +191,7 @@ string getRotatedBeginning(const string& str){
 
 void printRotatedVector(const vector<string>& v){
 
-   typedef vector<string>::iterator v_iter;
+   typedef vector<string>::const_iterator v_iter;
    typedef string::size_type str_type;
 
    //Find greatest length for beg and end
