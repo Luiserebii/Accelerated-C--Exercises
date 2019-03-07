@@ -43,7 +43,7 @@ the phrase back together, and writing it properly formatted.
 #include <iostream>
 #include <vector>
 #include <string>
-
+#include <algorithm>
 
 using std::cin;
 using std::cout;
@@ -53,10 +53,15 @@ using std::istream;
 using std::vector;
 using std::string;
 
+using std::max;
+
 vector<string> readToRotations(istream& is);
 vector<string> generateRotations(string str);
 void rotate(string& str);
- 
+bool compareRotations(const string& a, const string& b);
+string getRotatedEnd(const string& str);
+string getRotatedBeginning(const string& str);
+string getRotatedBeginning(const string& str);
 
 
 int main() {
@@ -66,7 +71,7 @@ int main() {
       
    //Return vector<string> of rotations 
    //Sort function for vectors
-   
+/*   
    string str; getline(cin, str);
    cout << "STR: " << str; rotate(str); cout << "    ROTATED: " << str; 
 
@@ -78,30 +83,34 @@ int main() {
    for(vstr_it it = rotations.begin(); it != rotations.end(); ++it){
       cout << *it << endl;
    } 
-   
+  */ 
+
+   //Read the rotations
+   vector<string> rotations = readToRotations(cin);
+
+   //Sort them
+   sort(rotations.begin(), rotations.end(), compareRotations);
+
+   //Print them
+   printRotatedVector(rotations);
    
 }
 
-/*
 vector<string> readToRotations(istream& is){
 
    vector<string> rotations;
 
    string line;
    while(getline(is, line)){
-
-      
-
+      generateRotations(rotations, line);
    }
-
-
+   
 }
-*/
+
 
 //Let's just take this as a copy, since we'll be manipulating this
-vector<string> generateRotations(string str){
+vector<string> generateRotations(vector<string>& rotations, string str){
    
-   vector<string> rotations;
    //Keep track of initial state
    string init = str;
    rotations.push_back(init);
@@ -128,11 +137,69 @@ void rotate(string& str){
 }
 
 
+bool compareRotations(const string& a, const string& b){
+   return getRotatedEnd(a) < getRotatedEnd(b);
+}
 
 
 
+//Simply gets the rotated end post-delimiter, since this is alphabetically sorted this is what we're going for
+string getRotatedEnd(const string& str){
+
+   string delimiter = "&";
+   string strEnd;
+
+   //The end is considered the first piece before the &
+   if(str.find(delimiter) != 0){
+      string strEnd = a.substr(0, str.find("&"));
+   } else {
+      string strEnd = "";
+   }
+
+   return strEnd;
+
+}
+
+string getRotatedBeginning(const string& str){
+
+   string delimiter = "&";
+   string strBeg;
+
+   //The end is considered the first piece before the &
+   if(str.find(delimiter) != 0){
+      string strBeg = a.substr(str.find("&") + 1);
+   } else {
+      string strBeg = "";
+   }
+
+   return strBeg;
+
+}
 
 
+void printRotatedVector(const vector<string>& v){
+
+   typedef vector::<string>::iterator v_iter;
+   typedef string::size_type str_type;
+
+   //Find greatest length for beg and end
+   str_type max_len_beg = 0;
+   str_type max_len_end = 0;   
+
+   for(v_iter it = v.begin(); it != v.end(); ++it){
+      max_len_beg < getRotatedBeginning(*it) ? max_len_beg = getRotatedBeginning(*it)
+                                             : max_len_beg;
+      max_len_end < getRotatedEnd(*it) ? max_len_end = getRotatedBeginning(*it)
+                                       : max_len_end;      
+   }
+
+   //Now, loop through to print based on max_len:
+   for(v_iter it = v.begin(); it != v.end(); ++it){
+      cout << setw(max_len_beg) << getRotatedBeginning(*it) << "    " << setw(max_len_end) << getRotatedEnd(*it) << endl;
+   }
+   return;
+
+}
 
 
 
