@@ -207,7 +207,7 @@ void printRotatedVector(const vector<string>& v){
 
    //Now, loop through to print based on max_len:
    for(v_iter it = v.begin(); it != v.end(); ++it){
-      cout << setw(max_len_beg) << getRotatedBeginning(*it) << "    " << setw(max_len_end) << getRotatedEnd(*it) << endl;
+      cout << setw(max_len_beg) << "|" << getRotatedBeginning(*it) << "    " << setw(max_len_end) << "|" << getRotatedEnd(*it) << endl;
    }
    return;
 
