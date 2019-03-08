@@ -64,6 +64,7 @@ bool compareRotations(const string& a, const string& b);
 string getRotatedEnd(const string& str);
 string getRotatedBeginning(const string& str);
 void printRotatedVector(const vector<string>& v);
+string toLowercase(const string& str);
 
 int main() {
    
@@ -147,7 +148,7 @@ void rotate(string& str){
 
 
 bool compareRotations(const string& a, const string& b){
-   return getRotatedEnd(a) < getRotatedEnd(b);
+   return toLowercase(getRotatedEnd(a)) < toLowercase(getRotatedEnd(b));
 }
 
 
@@ -207,7 +208,7 @@ void printRotatedVector(const vector<string>& v){
 
    //Now, loop through to print based on max_len:
    for(v_iter it = v.begin(); it != v.end(); ++it){
-      cout << setw(max_len_beg) << "|" << getRotatedBeginning(*it) << "    " << setw(max_len_end) << "|" << getRotatedEnd(*it) << endl;
+      cout << setw(max_len_beg) << getRotatedBeginning(*it) << "    " << setw(max_len_end) << getRotatedEnd(*it) << endl;
    }
    return;
 
@@ -215,7 +216,18 @@ void printRotatedVector(const vector<string>& v){
 
 
 
+string toLowercase(const string& str){
 
+   string res = "";
+
+   typedef string::const_iterator str_iter;
+   for(str_iter it = str.begin(); it != str.end(); ++it){
+      res += tolower(*it);\
+   }
+
+   return res;
+
+}
 
 
 
