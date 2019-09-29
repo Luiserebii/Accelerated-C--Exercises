@@ -5,14 +5,32 @@
 #include <algorithm>
 #include <numeric>
 
+//#include "./lib/student_lib.h"
+#include "./lib/median.h"
+#include "./lib/student_info.h"
+#include "./lib/grade.h"
+
 using std::cin;
 using std::cout;
+using std::endl;
 using std::string;
 using std::vector;
+using std::ostream;
+using std::domain_error;
 
 using std::transform;
 
-using std::accumualte;
+using std::accumulate;
+
+bool did_all_hw(const Student_info& s);
+double grade_aux(const Student_info& s);
+double median_analysis(const vector<Student_info>& students);
+void write_analysis(ostream& out, const string& name, double analysis(const vector<Student_info>&), const vector<Student_info>& did, const vector<Student_info>& didnt);
+double average(const vector<double>& v);
+double average_grade(const Student_info& s);
+double average_analysis(const vector<Student_info>& students);
+double optimistic_median(const Student_info& s);
+vector<Student_info> extract_fails(vector<Student_info>& students);
 
 int main() {
     
