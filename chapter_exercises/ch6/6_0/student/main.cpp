@@ -38,6 +38,9 @@ int main() {
     vector<Student_info> did, didnt;
     Student_info student;
     
+    cout << "As a reminder, type in students and their grades via the following format: " >> endl
+        << "[NAME] [MIDTERM] [FINAL] [HW...]" << endl;
+
     while(read(cin, student)) {
         did_all_hw(student) ? did.push_back(student) : didnt.push_back(student);
     }
@@ -55,7 +58,7 @@ int main() {
     //Run our analyses here
     write_analysis(cout, "median", median_analysis, did, didnt);
     write_analysis(cout, "average", average_analysis, did, didnt);
-    write_analysis(cout, "median of homework turned in", optimistic_median_analysis, did, didnt);
+    //write_analysis(cout, "median of homework turned in", optimistic_median_analysis, did, didnt);
 
     return 0;
 }
@@ -113,7 +116,7 @@ double optimistic_median(const Student_info& s) {
     vector<double> nonzero;
     remove_copy(s.homework.begin(), s.homework.end(), back_inserter(nonzero), 0);
 
-    return nonzero.empty() ? grade(s.midterm, s.final, 0) : grade(s.miderm, s.final, median(nonzero));
+    return nonzero.empty() ? grade(s.midterm, s.final, 0) : grade(s.midterm, s.final, median(nonzero));
 }
 
 bool fgrade(const Student_info& s){
