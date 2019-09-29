@@ -9,6 +9,7 @@ using std::string;
 using std::vector;
 
 using std::isspace;
+using std::isalnum;
 
 int main() {
 
@@ -54,4 +55,49 @@ vector<string> split(const string& str) {
     
     }
     return ret;
+}
+
+bool is_palindrome(const string& s) {
+    //Use equal() in passing the iterators for the full string, and check if equal to a range of iterators;
+    //equal() assumes the sizes of the pairs of iterators is the same, so it progressively iterates
+    //through the third iterator with the same length.
+    //
+    //Since rbegin() will provide a reverse iterator, it will head backwards on ++, thus providing what we want;
+    //checking each element in reverse with the non-reverse counterpart :)
+    return equal(s.begin(), s.end(), s.rbegin());
+}
+
+vector<string> find_urls(const string& s) {
+    vector<string> ret;
+    typedef string::const_iterator iter;
+    iter b = s.begin(), e = s.end();
+
+    while(b != e) {
+        
+        //Grab an iterator pointing to the beginning of a potential URL
+        b = url_beg(b, e);
+    
+        //If we indeed found something
+        if(b != e) {
+            //Get the rest of the URL
+            iter after = url_end(b, e);
+
+            ret.push_back(string(b, after));
+
+            //Advance b
+            b = after;
+        }
+    }
+}
+
+string::const_iterator url_end(string::const_iterator b, string::const_iterator e) {
+    //Return an iterator pointing at a non-URL char
+    return find_if(b, e, not_url_char);
+}
+
+bool not_url_char(char c) {
+    static const string url_ch = "~;/?:@=&$-_.+!*`(),";
+    //If we've not found it within our character metric (looking within the string and not hitting the end) or is
+    //alphanumeric, return the inverse    
+    return !(isalnum(c) || find(url_ch.begin(), url_ch.end(), c) != url_ch.end());
 }
