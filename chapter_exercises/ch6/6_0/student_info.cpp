@@ -1,4 +1,18 @@
 #include <iostream>
+#include <string>
+#include <vector>
+
+#include <algorithm>
+#include <numeric>
+
+using std::cin;
+using std::cout;
+using std::string;
+using std::vector;
+
+using std::transform;
+
+using std::accumualte;
 
 int main() {
     
