@@ -38,7 +38,9 @@ int main() {
     Student_info student;
     
     cout << "As a reminder, type in students and their grades via the following format: " << endl
-        << "[NAME] [MIDTERM] [FINAL] [HW...]" << endl;
+        << "[NAME] [MIDTERM] [FINAL] [HW...]" << endl
+        << "NOTE: No homework should be submitted as a 0." << endl;
+        
 
     while(read(cin, student)) {
         did_all_hw(student) ? did.push_back(student) : didnt.push_back(student);
