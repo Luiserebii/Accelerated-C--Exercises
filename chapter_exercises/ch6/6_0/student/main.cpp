@@ -30,6 +30,7 @@ double average(const vector<double>& v);
 double average_grade(const Student_info& s);
 double average_analysis(const vector<Student_info>& students);
 double optimistic_median(const Student_info& s);
+bool pgrade(const Student_info& s);
 vector<Student_info> extract_fails(vector<Student_info>& students);
 
 int main() {
@@ -113,6 +114,14 @@ double optimistic_median(const Student_info& s) {
     remove_copy(s.homework.begin(), s.homework.end(), back_inserter(nonzero), 0);
 
     return nonzero.empty() ? grade(s.midterm, s.final, 0) : grade(s.miderm, s.final, median(nonzero));
+}
+
+bool fgrade(const Student_info& s){
+       return grade(s) < 60;
+}
+
+bool pgrade(const Student_info& s) {
+    return !fgrade(s);
 }
 
 vector<Student_info> extract_fails(vector<Student_info>& students) {
