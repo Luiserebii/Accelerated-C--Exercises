@@ -60,3 +60,33 @@ void write_analysis(ostream& out, const string& name,
     out << name << ": median(did) = " << analysis(did) <<
         ", median(didnt) = " << analysis(didnt) << endl;
 }
+
+double average(const vector<double>& v) {
+    return accumulate(v.begin(), v.end(), 0.0);
+}
+
+double average_grade(const Student_info& s) {
+    return grade(s.midterm, s.final, average(s.homework));
+}
+
+double average_analysis(const vector<Student_info>& students) {
+    vector<double> grades;
+
+    transform(students.begin(), students.end(), back_inserter(grades), average_grade);
+    return median(grades);
+}
+
+double optimistic_median(const Student_info& s) {
+    vector<double> nonzero;
+    remove_copy(s.homework.begin(), s.homework.end(), back_inserter(nonzero), 0);
+
+    return nonzero.empty() ? grade(s.midterm, s.final, 0) : grade(s.miderm, s.final, median(nonzero));
+}
+
+vector<Student_info> extract_fails(vector<Student_info>& students) {
+    vector<Student_info>::iterator iter = stable_partition(students.begin(), students.end(), pgrade);
+    vector<Student_info> fail(iter, students.end());
+    students.erase(iter, students.end());
+
+    return fail;
+}
