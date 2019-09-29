@@ -76,23 +76,24 @@ vector<string> hcat(const vector<string>& left, const vector<string>& right){
    //Add 1 to leave a one-space margin between squares
    string::size_type width1 = width(left) + 1;
 
-   vector<string>::size_type i = 0, j = 0;
+   typedef vector<string>::iterator iter;
+   iter i = left.begin(), j = left.begin();
 
-   while(i != left.size() || j != right.size()){
+   while(i != left.end() || j != right.end()){
 
       //Construct new string to hold characters from both pictures
       string s;
 
       //Copy a row from the left-hand side, if there is one
-      if(i != left.size())
-         s = left[i++];
+      if(i != left.end())
+         s = *i++;
 
       //Pad to full width
       s += string(width1 - s.size(), ' ');
 
       //Copy a row from the right-hand side, if there is one
-      if(j != right.size())
-         s += right[j++];
+      if(j != right.end())
+         s += *j++;
 
       //Finally, add the row to the vector
       ret.push_back(s);
