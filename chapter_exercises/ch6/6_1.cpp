@@ -32,7 +32,7 @@ int main() {
     cout << "Printing currrent vector: " << endl;
     cout << vectorToString(test);
 
-    frame(test);
+    test = frame(test);
     cout << "Printing post-framing: " << endl;
     cout << vectorToString(test);
 }
