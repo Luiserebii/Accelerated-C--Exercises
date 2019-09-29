@@ -38,7 +38,7 @@ int main() {
     vector<Student_info> did, didnt;
     Student_info student;
     
-    cout << "As a reminder, type in students and their grades via the following format: " >> endl
+    cout << "As a reminder, type in students and their grades via the following format: " << endl
         << "[NAME] [MIDTERM] [FINAL] [HW...]" << endl;
 
     while(read(cin, student)) {
