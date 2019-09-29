@@ -5,7 +5,6 @@
 #include <algorithm>
 #include <numeric>
 
-//#include "./lib/student_lib.h"
 #include "./lib/median.h"
 #include "./lib/student_info.h"
 #include "./lib/grade.h"
