@@ -21,7 +21,6 @@ vector<string> frame(const vector<string>& v);
 vector<string> hcat(const vector<string>& left, const vector<string>& right);
 
 string vectorToString(const vector<string>& v);
-string addNewline(string s);
 
 int main() {
 
@@ -40,13 +39,14 @@ int main() {
 
 string vectorToString(const vector<string>& v) {
     string s;
-    transform(v.begin(), v.end(), back_inserter(s), addNewline);
+    typedef vector<string>::const_iterator iter;
+    for(iter i = v.begin(); i != v.end(); ++i) {
+        s += *i;
+        s += "\n";
+    }
     return s;
 }
 
-string addNewline(string s) {
-    return s + "\n";
-}
 
 vector<string> frame(const vector<string>& v){
 
