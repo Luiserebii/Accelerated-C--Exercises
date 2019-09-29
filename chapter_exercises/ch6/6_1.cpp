@@ -29,12 +29,31 @@ int main() {
     test.push_back("from");
     test.push_back("a planet called");
     test.push_back("Mars");
-    cout << "Printing currrent vector: " << endl;
+    cout << "Printing current vector: " << endl;
     cout << vectorToString(test);
 
     test = frame(test);
     cout << "Printing post-framing: " << endl;
     cout << vectorToString(test);
+
+    //Testing hcat...
+    cout << "Testing hcat..." << endl;
+    vector<string> mars;
+    mars.push_back("Fly me ");
+    mars.push_back("and let me ");
+    mars.push_back("let me see what ");
+    mars.push_back("On Jupiter ");
+    cout << "Printing Mars: " << endl;
+    cout << vectorToString(mars);
+
+    vector<string> jupiter;
+    jupiter.push_back("to the moon");
+    jupiter.push_back("play among the stars");
+    jupiter.push_back("Spring is like");
+    jupiter.push_back("and Mars");
+    cout << "Printing Jupiter: " << endl;
+    cout << vectorToString(jupiter); 
+
 }
 
 string vectorToString(const vector<string>& v) {
