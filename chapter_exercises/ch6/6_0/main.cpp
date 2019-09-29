@@ -14,15 +14,6 @@ using std::isalnum;
 int main() {
 
 
-
-
-
-
-
-
-
-
-
 }
 
 // true if the argument is whitespace, false otherwise
@@ -100,4 +91,31 @@ bool not_url_char(char c) {
     //If we've not found it within our character metric (looking within the string and not hitting the end) or is
     //alphanumeric, return the inverse    
     return !(isalnum(c) || find(url_ch.begin(), url_ch.end(), c) != url_ch.end());
+}
+
+string::const_iterator url_beg(string::const_iterator b, string::const_iterator e) {
+    static const string sep = "://";
+    typedef string::const_iterator iter;
+
+    iter i = b;
+    //Loop through searching "://" within the range [i, e), and ensure we don't hit the end
+    while((i = search(i, e, sep.begin(), sep.end())) != e) {
+        //If the seperator isn't at the beginning of end of the line...
+        if(i != b && i + sep.size() != e) {
+            //Mark beginning of the protocol name
+            iter beg = i;
+            //While the char before beg iterator is alpha, iterate backwards
+            //NOTE: Seems like iterators can be "indexed" (beg[-1] just refers to iterator before that one)
+            while(beg != b && isalpha(beg[-1])) {
+                --beg;
+            }
+
+            //If we have at least one valid cover before and after the seperator, good!
+            if(beg != i && !not_url_char(i[sep.size()])) {
+                return beg;
+            }
+        }
+        //Continue on, skip over seperator we found, as it is not a URL
+        i += sep.size();
+    }
 }
