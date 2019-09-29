@@ -2,10 +2,15 @@
 #include <vector>
 #include <string>
 
+#include <algorithm>
+#include <iterator>
+
 using std::vector;
 using std::string;
 
 using std::max;
+using std::transform;
+using std::back_inserter;
 
 std::string::size_type width(const std::vector<std::string>& v);
 vector<string> frame(const vector<string>& v);
@@ -13,7 +18,27 @@ vector<string> hcat(const vector<string>& left, const vector<string>& right);
 
 int main() {
 
+    vector<string> test;
+    test.push_back("Hello!");
+    test.push_back("from");
+    test.push_back("a planet called");
+    test.push_back("Mars");
+    cout << "Printing currrent vector: " << endl;
+    cout << vectorToString(test);
 
+    frame(test);
+    cout << "Printing post-framing: " << endl;
+    cout << vectorToString(test);
+}
+
+string vectorToString(const vector<string>& v) {
+    string s;
+    transform(v.begin(), v.end(), back_inserter(s), addNewline);
+    return s;
+}
+
+void addNewline(string s) {
+    return s + "\n";
 }
 
 vector<string> frame(const vector<string>& v){
@@ -26,9 +51,9 @@ vector<string> frame(const vector<string>& v){
    ret.push_back(border);
 
    //write each interior row...
-   for(vector<string>::size_type i = 0; i != v.size(); ++i){
+   for(vector<string>::const_iterator i = v.begin(); i != v.end(); ++i){
       //...bordered by an asterisk and space
-      ret.push_back("* " + v[i] + string(maxlen - v[i].size(), ' ') + " *");
+      ret.push_back("* " + *i + string(maxlen - (*i).size(), ' ') + " *");
    }
 
    //Finally, add the bottom border
