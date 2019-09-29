@@ -5,6 +5,10 @@
 #include <algorithm>
 #include <iterator>
 
+using std::cin;
+using std::cout;
+using std::endl;
+
 using std::vector;
 using std::string;
 
@@ -15,6 +19,9 @@ using std::back_inserter;
 std::string::size_type width(const std::vector<std::string>& v);
 vector<string> frame(const vector<string>& v);
 vector<string> hcat(const vector<string>& left, const vector<string>& right);
+
+string vectorToString(const vector<string>& v);
+string addNewline(string s);
 
 int main() {
 
@@ -37,7 +44,7 @@ string vectorToString(const vector<string>& v) {
     return s;
 }
 
-void addNewline(string s) {
+string addNewline(string s) {
     return s + "\n";
 }
 
