@@ -43,6 +43,9 @@ int main() {
     mars.push_back("and let me ");
     mars.push_back("let me see what ");
     mars.push_back("On Jupiter ");
+    mars.push_back("In other words... ");
+    mars.push_back("In other words... ");
+    mars.push_back("A: I love you");
     cout << "Printing Mars: " << endl;
     cout << vectorToString(mars);
 
@@ -51,6 +54,9 @@ int main() {
     jupiter.push_back("play among the stars");
     jupiter.push_back("Spring is like");
     jupiter.push_back("and Mars");
+    jupiter.push_back("please be true");
+    jupiter.push_back("");
+    jupiter.push_back("B: I love you");
     cout << endl << "Printing Jupiter: " << endl;
     cout << vectorToString(jupiter); 
 
