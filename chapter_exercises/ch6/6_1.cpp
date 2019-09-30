@@ -37,7 +37,7 @@ int main() {
     cout << vectorToString(test);
 
     //Testing hcat...
-    cout << "Testing hcat..." << endl;
+    cout << "Testing hcat..." << endl << endl;
     vector<string> mars;
     mars.push_back("Fly me ");
     mars.push_back("and let me ");
@@ -51,9 +51,12 @@ int main() {
     jupiter.push_back("play among the stars");
     jupiter.push_back("Spring is like");
     jupiter.push_back("and Mars");
-    cout << "Printing Jupiter: " << endl;
+    cout << endl << "Printing Jupiter: " << endl;
     cout << vectorToString(jupiter); 
 
+    cout << endl << "Post-hcat: " << endl << endl;
+    vector<string> instrumentality = hcat(mars, jupiter);
+    cout << vectorToString(instrumentality);
 }
 
 string vectorToString(const vector<string>& v) {
@@ -95,8 +98,8 @@ vector<string> hcat(const vector<string>& left, const vector<string>& right){
    //Add 1 to leave a one-space margin between squares
    string::size_type width1 = width(left) + 1;
 
-   typedef vector<string>::iterator iter;
-   iter i = left.begin(), j = left.begin();
+   typedef vector<string>::const_iterator iter;
+   iter i = left.begin(), j = right.begin();
 
    while(i != left.end() || j != right.end()){
 
