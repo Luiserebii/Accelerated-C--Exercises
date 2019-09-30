@@ -8,9 +8,10 @@
 #include "./lib/median.h"
 #include "./lib/student_info.h"
 #include "./lib/grade.h"
+#include "student.h"
 
-using std::cin;
-using std::cout;
+//using std::cin;
+//using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
@@ -20,49 +21,6 @@ using std::domain_error;
 using std::transform;
 
 using std::accumulate;
-
-bool did_all_hw(const Student_info& s);
-double grade_aux(const Student_info& s);
-double median_analysis(const vector<Student_info>& students);
-void write_analysis(ostream& out, const string& name, double analysis(const vector<Student_info>&), const vector<Student_info>& did, const vector<Student_info>& didnt);
-double average(const vector<double>& v);
-double average_grade(const Student_info& s);
-double average_analysis(const vector<Student_info>& students);
-double optimistic_median(const Student_info& s);
-bool pgrade(const Student_info& s);
-vector<Student_info> extract_fails(vector<Student_info>& students);
-
-int main() {
-    
-    vector<Student_info> did, didnt;
-    Student_info student;
-    
-    cout << "As a reminder, type in students and their grades via the following format: " << endl
-        << "[NAME] [MIDTERM] [FINAL] [HW...]" << endl
-        << "NOTE: No homework should be submitted as a 0." << endl;
-        
-
-    while(read(cin, student)) {
-        did_all_hw(student) ? did.push_back(student) : didnt.push_back(student);
-    }
-
-    if(did.empty()) {
-        cout << "No student did all the homework!" << endl;
-        return 1;
-    }
-
-    if(didnt.empty()) {
-        cout << "Every student did all the homework!" << endl;
-        return 1;
-    }
-
-    //Run our analyses here
-    write_analysis(cout, "median", median_analysis, did, didnt);
-    write_analysis(cout, "average", average_analysis, did, didnt);
-    //write_analysis(cout, "median of homework turned in", optimistic_median_analysis, did, didnt);
-
-    return 0;
-}
 
 bool did_all_hw(const Student_info& s) {
     return ((find(s.homework.begin(), s.homework.end(), 0)) == s.homework.end());
