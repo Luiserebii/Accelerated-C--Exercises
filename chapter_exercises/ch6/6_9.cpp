@@ -29,11 +29,12 @@ int main() {
     string meme = concatenateVector(test);
     cout << "accumulate: " << meme << endl;
 
-
 }
 
 string concatenateVector(const vector<string>& v) {
-    return accumulate(v.begin(), v.end(), "");
+    string str;
+    string res = accumulate(v.begin(), v.end(), str);
+    return string(res);
 }
 
 string vectorToString(const vector<string>& v) {
