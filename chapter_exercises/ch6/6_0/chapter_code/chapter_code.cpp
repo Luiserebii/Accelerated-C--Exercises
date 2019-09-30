@@ -4,17 +4,14 @@
 #include <vector>
 #include <algorithm>
 
+#include "chapter_code.h"
+
 using std::isspace;
 using std::string;
 using std::vector;
 
 using std::isspace;
 using std::isalnum;
-
-int main() {
-
-
-}
 
 // true if the argument is whitespace, false otherwise
 bool space(char c) {
