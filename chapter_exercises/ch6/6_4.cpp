@@ -34,7 +34,8 @@ int main() {
      * copy(u.begin(), u.end(), v.begin());
      */
 
-    fixOne();
+//    fixOne();
+    fixTwo();
     return 0; 
 }
 
@@ -47,8 +48,19 @@ void fixOne() {
     copy(u.begin(), u.end(), back_inserter(v));
 
     cout << vectorToString(v);
-
 }
+
+/**
+ * Another fix: simply allocate space beforehand
+ */
+void fixTwo() {
+    vector<int> u(10, 100);
+    vector<int> v(10);
+    copy(u.begin(), u.end(), v.begin());
+
+    cout << vectorToString(v);
+}
+
 
 string vectorToString(const vector<int>& v) {
     stringstream ss;
