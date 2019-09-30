@@ -8,10 +8,9 @@
 
 NUM=$1
 
-if [ $NUM == 1 ]
-then
-	g++ 6_1.cpp && ./a.out
-elif [ $NUM == 2 ]
+if [ $NUM == 2 ]
 then
 	g++ 6_2.cpp ./6_0/chapter_code/chapter_code.cpp && ./a.out
+else
+	g++ 6_$NUM.cpp && ./a.out
 fi
