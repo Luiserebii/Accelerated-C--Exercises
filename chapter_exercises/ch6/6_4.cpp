@@ -2,6 +2,8 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <sstream>
+#include <string>
 
 using std::cin;
 using std::cout;
@@ -10,9 +12,13 @@ using std::endl;
 using std::vector;
 using std::copy;
 using std::back_inserter;
+using std::stringstream;
+using std::string;
 
 void fixOne();
 void fixTwo();
+
+string vectorToString(const vector<int>& v);
 
 int main() {
 
@@ -39,6 +45,16 @@ void fixOne() {
     vector<int> u(10, 100);
     vector<int> v;
     copy(u.begin(), u.end(), back_inserter(v));
-    cout << "v: " << v[0] << "    " << v[1] << endl;
 
+    cout << vectorToString(v);
+
+}
+
+string vectorToString(const vector<int>& v) {
+    stringstream ss;
+    typedef vector<int>::const_iterator iter;
+    for(iter i = v.begin(); i != v.end(); ++i) {
+        ss << *i << endl;
+    }
+    return ss.str();
 }
