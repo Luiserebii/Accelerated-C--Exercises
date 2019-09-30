@@ -5,7 +5,8 @@
 #include <algorithm>
 
 #include "chapter_code.h"
-
+//REMOVE:
+using std::cout; using std::endl;
 using std::isspace;
 using std::string;
 using std::vector;
@@ -61,7 +62,6 @@ vector<string> find_urls(const string& s) {
     iter b = s.begin(), e = s.end();
 
     while(b != e) {
-        
         //Grab an iterator pointing to the beginning of a potential URL
         b = url_beg(b, e);
     
@@ -76,6 +76,7 @@ vector<string> find_urls(const string& s) {
             b = after;
         }
     }
+    return ret;
 }
 
 string::const_iterator url_end(string::const_iterator b, string::const_iterator e) {
@@ -115,4 +116,5 @@ string::const_iterator url_beg(string::const_iterator b, string::const_iterator 
         //Continue on, skip over seperator we found, as it is not a URL
         i += sep.size();
     }
+    return e;
 }

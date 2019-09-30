@@ -1,7 +1,12 @@
+#include <iostream>
 #include <vector>
 #include <string>
 
 #include "./6_0/chapter_code/chapter_code.h"
+
+using std::cin;
+using std::cout;
+using std::endl;
 
 using std::vector;
 using std::string;
