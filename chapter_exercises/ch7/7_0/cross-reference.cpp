@@ -27,7 +27,7 @@ int main() {
  * of words from that stream (like split, as default), and return a mapping of strings to vector<ints>, 
  * representing their locations found by line number
  */
-map<string, vector<int> > xref(istream& in, vector<string> find_words(const string&) = split) {
+map<string, vector<int> > xref(istream& in, vector<string> find_words(const string&)) {
     string line;
     int line_number = 0;
     map<string, vector<int> > ret;
