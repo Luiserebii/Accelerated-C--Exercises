@@ -18,7 +18,25 @@ using std::map;
 map<string, vector<int> > xref(istream& in, vector<string> find_words(const string&) = split);
 
 int main() {
+    
+    map<string, vector<int> > ret = xref(cin);
 
+    for(map<string, vector<int> >::const_iterator i = ret.begin(); i != ret.end(); ++i) {
+        //Write the first word
+        cout << i->first << " occurs on line(s): ";
+
+        //And next, the line numbers:
+        vector<int>::const_iterator line_it = i->second.begin();
+        //Write the first one, and...
+        cout << *line_it;
+        ++line_it;
+        //..the rest, if any
+        while(line_it != i->second.end()) {
+            cout << ", " << *line_it;
+            ++line_it;
+        }
+        cout << endl;
+    }
     return 0;
 }
 
