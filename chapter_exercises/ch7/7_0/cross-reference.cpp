@@ -3,6 +3,8 @@
 #include <vector>
 #include <map>
 
+#include "../../ch5/5_0/chapter_code/chapter_code.h"
+
 using std::cin;
 using std::cout;
 using std::endl;
@@ -12,6 +14,8 @@ using std::string;
 using std::getline;
 using std::vector;
 using std::map;
+
+map<string, vector<int> > xref(istream& in, vector<string> find_words(const string&) = split);
 
 int main() {
 
