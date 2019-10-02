@@ -20,9 +20,28 @@ typedef map<string, Rule_collection> Grammar;
 Grammar read_grammar(istream& in);
 vector<string> gen_sentence(const Grammar& g);
 bool bracketed(const string& s);
+void gen_aux(const Grammar& g, const string& word, vector<string>& ret);
+int nrand(int n);
 
 int main() {
 
+    //Generate a sentence
+    vector<string> sentence = gen_sentence(read_grammar(cin));
+
+    //Write the first word
+    vector<string>::const_iterator it = sentence.begin();
+    if(!sentence.empty()) {
+        cout << *it;
+        ++it;
+    }
+
+    //Write the rest of the words, each preceeded by a space
+    while(it != sentence.end()) {
+        cout << " " << *it;
+        ++it;
+    }
+
+    cout << endl;
     return 0;
 }
 
