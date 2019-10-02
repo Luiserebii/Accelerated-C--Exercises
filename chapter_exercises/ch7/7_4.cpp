@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <map>
@@ -11,13 +12,13 @@ using std::cout;
 using std::endl;
 using std::istream;
 
+using std::stringstream;
 using std::string;
 using std::getline;
 using std::vector;
 using std::map;
 
 using std::find;
-using std::to_string;
 
 map<string, vector<int> > xref(istream& in, vector<string> find_words(const string&) = split);
 
@@ -35,44 +36,46 @@ int main() {
          */
 
         const int MAX_LIMIT_CHAR_NUM = 20;
-        string nextToWrite = "";
+        stringstream next;
         int char_number = 0;
 
         //Create the first line
-        nextToWrite += i->first + " occurs on line(s): ";
+        next << i->first << " occurs on line(s): ";
         char_number += nextToWrite.size();
 
         //Print here to "buffer"
         cout << nextToWrite;
-        nextToWrite = "";
+        next.str("");
 
         //And next, the line numbers:
         vector<int>::const_iterator line_it = i->second.begin();
         //Write the first one, and...
-        nextToWrite += *line_it;
+        next << *line_it;
         //Ensure to keep track of number of chars in current line (counting from addition to string)
         char_number += nextToWrite.size();
         ++line_it;
         //..the rest, if any
-        string tempNext = "";
+        
+
         while(line_it != i->second.end()) {
-            tempNext += ", ";
-            //tempNext += *line_it;
-            tempNext += "HI";
+
+            stringstream temp;
+            temp << ", " << *line_it;
             //If under the limit,
-            if(char_number + tempNext.size() < MAX_LIMIT_CHAR_NUM) {
+            if(char_number + temp.str.length() < MAX_LIMIT_CHAR_NUM) {
                 //Add it to our psuedo-buffer
-                nextToWrite += tempNext;
+                next << temp.str();
             } else {
                 //Otherwise, make a line, and add it
-                nextToWrite += "\n" + tempNext;
+                next << endl << temp.str();
+
                 //And set the new char_number appropriately
-                char_number = tempNext.size();
+                char_number = temp.str.length();
             }
             ++line_it;
         }
         //Finally, print the rest of the line
-        cout << nextToWrite << endl;
+        cout << next.str() << endl;
 
 /*
         //Write the first word
