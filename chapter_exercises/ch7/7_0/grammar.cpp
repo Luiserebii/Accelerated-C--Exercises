@@ -2,6 +2,10 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <exception>
+#include <cstdlib>
+
+#include "../../ch5/5_0/chapter_code/chapter_code.h"
 
 using std::istream;
 using std::cin;
@@ -13,6 +17,10 @@ using std::getline;
 using std::vector;
 using std::map;
 
+using std::domain_error;
+using std::logic_error;
+using std::rand;
+
 typedef vector<string> Rule;
 typedef vector<Rule> Rule_collection;
 typedef map<string, Rule_collection> Grammar;
@@ -22,6 +30,28 @@ vector<string> gen_sentence(const Grammar& g);
 bool bracketed(const string& s);
 void gen_aux(const Grammar& g, const string& word, vector<string>& ret);
 int nrand(int n);
+
+/**
+ * ===============
+ *  Sample input:
+ * ===============
+ * 
+ * <noun> cat
+ * <noun> dog
+ * <noun> table
+ * <noun-phrase> <noun>
+ * <noun-phrase> <adjective> <noun-phrase>
+ * <adjective> large
+ * <adjective> brown
+ * <adjective> absurd 
+ * <verb> jumps
+ * <verb> sits
+ * <location> on the stairs
+ * <location> under the sky
+ * <location> wherever it wants
+ * <sentence> the <noun-phrase> <verb> <location>
+ *
+ */
 
 int main() {
 
