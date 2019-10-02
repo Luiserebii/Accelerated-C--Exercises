@@ -41,10 +41,10 @@ int main() {
 
         //Create the first line
         next << i->first << " occurs on line(s): ";
-        char_number += nextToWrite.size();
+        char_number += next.str().length();
 
         //Print here to "buffer"
-        cout << nextToWrite;
+        cout << next.str();
         next.str("");
 
         //And next, the line numbers:
@@ -52,7 +52,7 @@ int main() {
         //Write the first one, and...
         next << *line_it;
         //Ensure to keep track of number of chars in current line (counting from addition to string)
-        char_number += nextToWrite.size();
+        char_number += next.str().size();
         ++line_it;
         //..the rest, if any
         
@@ -62,7 +62,7 @@ int main() {
             stringstream temp;
             temp << ", " << *line_it;
             //If under the limit,
-            if(char_number + temp.str.length() < MAX_LIMIT_CHAR_NUM) {
+            if(char_number + temp.str().length() < MAX_LIMIT_CHAR_NUM) {
                 //Add it to our psuedo-buffer
                 next << temp.str();
             } else {
@@ -70,7 +70,7 @@ int main() {
                 next << endl << temp.str();
 
                 //And set the new char_number appropriately
-                char_number = temp.str.length();
+                char_number = temp.str().length();
             }
             ++line_it;
         }
