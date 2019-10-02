@@ -33,6 +33,23 @@ int main() {
          * buffering output by keeping it in a string, which we will need to actively
          * keep track of the number of chars we will print. This is why nextToWrite
          * will "flush" every so often
+         *
+         * The input used: 
+         *
+         * apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple
+         * orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange
+         * orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange orange
+         * orange orange orange orange orange orange orange
+         * banana banana banana
+         * banana
+         * banana banana banana
+         * banana banana
+         * banana banana banana banana banana banana banana
+         * banana banana
+         * apple apple apple apple apple apple apple apple apple apple apple apple apple apple
+         * apple apple apple apple apple apple apple apple apple apple apple apple apple apple
+         * apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple
+         *
          */
 
         const int MAX_LIMIT_CHAR_NUM = 40;
