@@ -77,3 +77,32 @@ void gen_aux(const Grammar& g, const string& word, vector<string>& ret) {
         }
     }
 }
+
+/**
+ * Return a random integer in an assymetric range [0, n)
+ *
+ * Implementation: Idea is that, with a large enough number, or any number in which 
+ * RAND_MAX % x != 0, there will be overlap, repeats/places where some numbers will become more
+ * likely than others (think of very large numbers near RAND_MAX, like 2000; only one value
+ * can yield 2000, whereas 2 can do 1500)
+ *
+ * In order to avoid this, we employ logic to determine which "bucket" the number falls under.
+ * If the random number generated is too large, it will fall out of range of these evenly
+ * numbered buckets entirely, and be tossed for another (check the while loop)
+ *
+ * Ex: if n = 3, [0, 10922), [10922, 21844) will yield 1, [21844, 32766) will yield 2, and overlap
+ * (32766 and 32767 will be discarded)
+ */
+int nrand(int n) {
+    if (n <= 0 || n > RAND_MAX) {
+        throw domain_error("Argument to nrand is out of range");
+    }
+    const int bucket_size = RAND_MAX / n;
+    int r;
+
+    do { 
+        r = rand() / bucket_size;
+    } while(r >= n);
+
+    return r;
+}
