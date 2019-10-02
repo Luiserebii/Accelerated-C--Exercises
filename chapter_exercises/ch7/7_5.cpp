@@ -28,9 +28,9 @@ typedef vector<Rule> Rule_collection;
 typedef map<string, Rule_collection> Grammar;
 
 Grammar read_grammar(istream& in);
-vector<string> gen_sentence(const Grammar& g);
+list<string> gen_sentence(const Grammar& g);
 bool bracketed(const string& s);
-void gen_aux(const Grammar& g, const string& word, vector<string>& ret);
+void gen_aux(const Grammar& g, const string& word, list<string>& ret);
 int nrand(int n);
 
 /**
@@ -61,7 +61,7 @@ int main() {
     list<string> sentence = gen_sentence(read_grammar(cin));
 
     //Write the first word
-    vector<string>::const_iterator it = sentence.begin();
+    list<string>::const_iterator it = sentence.begin();
     if(!sentence.empty()) {
         cout << *it;
         ++it;
