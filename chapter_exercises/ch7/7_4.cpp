@@ -35,7 +35,7 @@ int main() {
          * will "flush" every so often
          */
 
-        const int MAX_LIMIT_CHAR_NUM = 20;
+        const int MAX_LIMIT_CHAR_NUM = 40;
         stringstream next;
         int char_number = 0;
 
@@ -65,6 +65,8 @@ int main() {
             if(char_number + temp.str().length() < MAX_LIMIT_CHAR_NUM) {
                 //Add it to our psuedo-buffer
                 next << temp.str();
+                //Advance char_number
+                char_number += temp.str().length();
             } else {
                 //Otherwise, make a line, and add it
                 next << endl << temp.str();
