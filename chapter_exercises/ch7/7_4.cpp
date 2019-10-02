@@ -17,6 +17,7 @@ using std::vector;
 using std::map;
 
 using std::find;
+using std::to_string;
 
 map<string, vector<int> > xref(istream& in, vector<string> find_words(const string&) = split);
 
@@ -38,8 +39,8 @@ int main() {
         int char_number = 0;
 
         //Create the first line
-        str += i->first + " occurs on line(s): ";
-        char_number += str.size();
+        nextToWrite += i->first + " occurs on line(s): ";
+        char_number += nextToWrite.size();
 
         //Print here to "buffer"
         cout << nextToWrite;
@@ -53,9 +54,11 @@ int main() {
         char_number += nextToWrite.size();
         ++line_it;
         //..the rest, if any
+        string tempNext = "";
         while(line_it != i->second.end()) {
-            string tempNext = ", ";
-            tempNext += *line_it;
+            tempNext += ", ";
+            //tempNext += *line_it;
+            tempNext += "HI";
             //If under the limit,
             if(char_number + tempNext.size() < MAX_LIMIT_CHAR_NUM) {
                 //Add it to our psuedo-buffer
@@ -109,9 +112,9 @@ map<string, vector<int> > xref(istream& in, vector<string> find_words(const stri
         //For each word...
         for(vector<string>::const_iterator i = words.begin(); i != words.end(); ++i) {
             //Target the string in the map and push_back the line number, only if not found
-            if(find(ret[*i].begin(), ret[*i].end(), line_number) == ret[*i].end()) {
+            //if(find(ret[*i].begin(), ret[*i].end(), line_number) == ret[*i].end()) {
                 ret[*i].push_back(line_number);
-            }
+            //}
         }
     }
     return ret;
