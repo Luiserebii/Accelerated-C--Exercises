@@ -24,9 +24,10 @@ int main() {
     return 0;
 }
 
-string writeGroupedOccurences(ostream& out, const map<string, int>& m) {
+ostream& writeGroupedOccurences(ostream& out, const map<string, int>& m) {
     out << "Ordered by occurence count: " << endl << endl;
-    const map<int, vector<string> > groupOccurences = mapGroupOccurences(m);
+    const map<int, vector<string> > groupOccurences;
+    mapGroupOccurences(m, groupOccurences);
     for(map<int, vector<string> >::const_iterator i = groupOccurences.begin(); i != groupOccurences.end(); ++i) {
         //Write the int
         out << i->first << ": " << endl;
@@ -36,6 +37,11 @@ string writeGroupedOccurences(ostream& out, const map<string, int>& m) {
         }
         cout << endl;
     }
+    return out;
 }
 
-
+void mapGroupOccurences(const map<string, int>& m, const map<int, vector<string> >& groupOccurences) {
+    for(map<string, int>::const_iterator i = m.begin(); i != m.end(); ++i) {
+        groupOccurences[i->second].push_back(i->first);
+    }
+}
