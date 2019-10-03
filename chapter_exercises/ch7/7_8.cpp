@@ -3,7 +3,6 @@
 #include <vector>
 #include <map>
 
-//#include "../ch5/5_0/chapter_code/chapter_code.h"
 #include "../ch6/6_0/chapter_code/chapter_code.h"
 
 using std::cin;
@@ -20,7 +19,7 @@ map<string, vector<int> > xref(istream& in, vector<string> find_words(const stri
 
 int main() {
     
-    map<string, vector<int> > ret = xref(cin);
+    map<string, vector<int> > ret = xref(cin, find_urls);
 
     for(map<string, vector<int> >::const_iterator i = ret.begin(); i != ret.end(); ++i) {
         //Write the first word
