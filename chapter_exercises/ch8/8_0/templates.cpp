@@ -5,6 +5,8 @@
 #include <string>
 #include <cctype>
 
+#include "templates.h"
+
 using std::cin;
 using std::cout;
 using std::endl;
