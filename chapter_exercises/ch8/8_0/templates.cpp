@@ -63,5 +63,21 @@ Out copy(In begin, In end, Out dest) {
 }
 
 
+/**
+ * Sequential read-write access
+ *
+ * For - Type of forward iterator - a combo of read-only and write-only in a unifying way
+ * X   - Type of element to manipulate (defining val to change to, when encountering some val)
+ **/
+template <class For, class X>
+void replace(For begin, For end, const X& x, const X& y) {
+    while(begin != end) {
+        if(*begin == x)
+            *begin = y;
+        ++begin;
+    }
+}
+
+
 
 
