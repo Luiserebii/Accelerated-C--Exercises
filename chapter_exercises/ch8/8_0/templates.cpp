@@ -2,6 +2,8 @@
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
+#include <string>
+#include <cctype>
 
 using std::cin;
 using std::cout;
@@ -11,7 +13,8 @@ using std::vector;
 using std::domain_error;
 using std::sort;
 using std::find_if;
-
+using std::string;
+using std::isspace;
 
 template <class T>
 T median(vector<T> v);
@@ -137,4 +140,13 @@ void split(const string& str, Out os) {
     }
 }
 
+// true if the argument is whitespace, false otherwise
+bool space(char c) {
+    return isspace(c);
+}
+
+// false if the argument is whitespace, true otherwise
+bool not_space(char c) {
+    return !isspace(c);
+}
 
