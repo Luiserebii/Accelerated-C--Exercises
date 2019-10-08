@@ -1,6 +1,15 @@
 #include <iostream>
+#include <vector>
+#include <stdexcept>
+#include <algorithm>
 
+using std::cin;
+using std::cout;
+using std::endl;
 
+using std::vector;
+using std::domain_error;
+using std::sort;
 
 template <class T>
 T median(vector<T> v);
