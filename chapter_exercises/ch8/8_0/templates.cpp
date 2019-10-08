@@ -78,6 +78,42 @@ void replace(For begin, For end, const X& x, const X& y) {
     }
 }
 
+/**
+ * Reversible access
+ *
+ * Bi - Type of bidirectional iterator -  forward iterator, plus -- operation supported
+ *
+ **/
+template <class Bi> void reverse(Bi begin, Bi end) {
+    while(begin != end) {
+        --end;
+        if(begin != end)
+            swap(*begin++, *end);
+    }
+}
+
+/**
+ * Random access
+ *
+ * Ran - Type of random-access iterator - forward iterator, plus basic arithmetic support
+ * X   - Value to search for
+ **/
+template <class Ran, class X>
+bool binary_search(Ran begin, Ran end, const X& x) {
+    while(begin < end) {
+        //Find the midpoint of the range
+        Ran mid = begin + (end - begin) / 2;
+
+        //See which part of the range contains x; keep looking only in that part
+        if(x < *mid)
+            end = mid;
+        else if (*mid < x)
+            begin = mid + 1;
+        //If we got here, then *mid == x, so we're finished!
+        else return true;
+    }
+}
+
 
 
 
