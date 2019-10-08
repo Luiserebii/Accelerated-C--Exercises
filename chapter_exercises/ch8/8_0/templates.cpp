@@ -129,7 +129,7 @@ void split(const string& str, Out os) {
     iter i = str.begin();
     while(i != str.end()) {
         //Ignore leading blanks
-        i = find_if(i, str.end(), not_space)
+        i = find_if(i, str.end(), not_space);
     
         //Find end of next word
         iter j = find_if(i, str.end(), space);
