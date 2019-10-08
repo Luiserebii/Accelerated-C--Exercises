@@ -18,16 +18,6 @@ using std::find_if;
 using std::string;
 using std::isspace;
 
-template <class T>
-T median(vector<T> v);
-
-
-int main() {
-
-    return 0;
-}
-
-
 // Template header
 template <class T>
 T median(vector<T> v) {
