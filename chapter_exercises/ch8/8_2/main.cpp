@@ -90,6 +90,15 @@ int main() {
     writeVector(removeCopyIf, cout);
     cout << endl;
 
+    //Testing remove(b, e, t)
+    cout << "And remove... let's try to use remove on the second vector" << endl;
+    cout << "Enter a value to remove... ";
+    removeVal = 0;
+    cin >> removeVal;
+    remove(v2.begin(), v2.end(), removeVal);
+    writeVector(v2, cout);
+    cout << endl;
+
     return 0;
 
 }
