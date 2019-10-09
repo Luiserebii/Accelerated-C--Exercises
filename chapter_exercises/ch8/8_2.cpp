@@ -6,6 +6,7 @@ using std::cout;
 using std::endl;
 using std::istream;
 using std::ostream;
+using std::boolalpha;
 
 using std::vector;
 
@@ -21,13 +22,21 @@ ostream& writeVector(const vector<T>& v, ostream& out);
 
 int main() {
     
-    cout << "Welcome! Please enter a set of int elements delineated by a space, followed by EOF: " << endl;
+    cout << "Welcome! Please enter a set of int elements delineated by a space, followed by EOF, or unexpected input: " << endl;
 
     vector<int> v1;
     readVector(v1, cin);
 
-    cout << "Writing your vector: " << endl;
+    cout << "Another one: " << endl;
+
+    vector<int> v2;
+    readVector(v2, cin);
+
+    cout << "Writing your vectors: " << endl;
     writeVector(v1, cout);
+    writeVector(v2, cout);
+
+    cout << "Are they equal?  " << boolalpha << equal(v1.begin(), v1.end(), v2.begin()) << endl;
 
     return 0;
 
