@@ -66,7 +66,7 @@ int main() {
     cout << endl;
 
     //Testing remove_copy(b, e, d, t)
-    cout << "And remove_copy... let's attempt to remove values from the first vector, return as copy" >> endl;
+    cout << "And remove_copy... let's attempt to remove values from the first vector, return as copy" << endl;
     vector<int> removeCopy;
     cout << "Enter a value to remove... ";
     int removeVal;
@@ -77,6 +77,17 @@ int main() {
     writeVector(v1, cout);
     cout << "removeCopy: ";
     writeVector(removeCopy, cout);
+    cout << endl;
+
+    //Testing remove_copy_if(b, e, d, p)
+    cout << "And remove_copy_if... let's attempt to remove even numbered values from the first vector, return as copy" << endl;
+    vector<int> removeCopyIf;
+    remove_copy_if(v1.begin(), v1.end(), back_inserter(removeCopyIf), isEven);
+    //Print v1 here to prove it is intact, alongside the copy post-remove
+    cout << "v1: ";
+    writeVector(v1, cout);
+    cout << "removeCopyIf: ";
+    writeVector(removeCopyIf, cout);
     cout << endl;
 
     return 0;
