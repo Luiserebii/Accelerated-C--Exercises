@@ -125,5 +125,25 @@ InputIterator find_if(InputIterator begin, InputIterator end, bool predicate(T))
 }
 
 
+template <class InputIterator, class OutputIterator, class T>
+OutputIterator remove_copy(InputIterator begin, InputIterator end, OutputIterator destination, T val) {
+    //Strategy: Iterate through range, only add ones not to be removed to destination
+    while(begin != end) {
+        if(*begin != val) *destination++ = *begin++;
+    }
+    //This should be the end by now, so this satisfies the requirement
+    //of returning last iterator in asymmetric range
+    return destination;
+}
+
+template <class InputIterator, class OutputIterator, class T>
+OutputIterator remove_copy_if(InputIterator begin, InputIterator end, OutputIterator destination, bool predicate(T)) {
+    while(begin != end) {
+        if(!predicate(*begin)) *destination++ = *begin++;
+    }
+    //This should be the end by now, so this satisfies the requirement
+    //of returning last iterator in asymmetric range
+    return destination;
+}
 
 #endif
