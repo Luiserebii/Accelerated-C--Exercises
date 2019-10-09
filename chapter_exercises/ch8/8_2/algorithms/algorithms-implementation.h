@@ -82,4 +82,39 @@ void copyI(InputIterator begin, InputIterator end, OutputIterator destination) {
 }
 
 
+template <class InputIterator>
+bool search(InputIterator begin, InputIterator end, InputIterator begin2, InputIterator end2) {
+    while(begin != end) {
+        if(*begin == *begin2) {
+            //Obtain copies of pairs of iterators so to not modify and break them
+            //if we go through this process and end up finding an invalid sequence
+            InputIterator b = begin;
+            InputIterator b2 = begin2;
+            
+            while(b2 != end2) {
+                //Adding clause to check if we hit the end, for if we did, at this point,
+                //the range is clearly too large, so let's break here
+                if(b2 == end) return false;
+
+                //If we encounter any inequality at some point, we need to break the loop
+                if(*b++ != *b2++) break;
+
+                //However, if we've made it this far, and its the end...
+                if(b2 == end2) return true;
+            }
+        }
+        //Move begin up through the loop
+        begin++;
+    }
+}
+
+template <class InputIterator, class T>
+InputIterator find_if(InputIterator begin, InputIterator end, bool predicate(T)) {
+    while(begin != end) {
+        predicate(begin) ? return begin : begin++;
+    }
+}
+
+
+
 #endif
