@@ -170,11 +170,19 @@ OutputIterator remove_copy_if(InputIterator begin, InputIterator end, OutputIter
  **/
 template <class ForwardIterator, class InputIterator, class T>
 ForwardIterator remove(ForwardIterator begin, InputIterator end, T val) {
+    ForwardIterator swapptr = begin;
     while(begin != end) {
-    
+        //If we have a value we want to preserve
+        if(*begin != val) {
+            //Set the swap pointer (place where we can put valid values at beginning)
+            //and increment
+            *swapptr++ = *begin++;
+        } else {
+            begin++;
+        }
     
     }
-    return 
+    return swapptr;
 }
 
 
