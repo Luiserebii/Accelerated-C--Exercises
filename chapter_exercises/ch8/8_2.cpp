@@ -12,23 +12,53 @@ using std::vector;
 
 template <class InputIterator>
 bool equal(InputIterator begin, InputIterator end, InputIterator begin2);
+
 template <class T>
-void writeVector(const vector<T>& v, ostream& out);
+istream& readVector(vector<T>& v, istream& in);
+
+template <class T> 
+ostream& writeVector(const vector<T>& v, ostream& out);
 
 int main() {
     
-    v
+    cout << "Welcome! Please enter a set of int elements delineated by a space, followed by EOF: " << endl;
+
+    vector<int> v1;
+    readVector(v1, cin);
+
+    cout << "Writing your vector: " << endl;
+    writeVector(v1, cout);
 
     return 0;
 
 }
 
+
+/**
+ *
+ * IDEA: MAKE VERSION OF READVECTOR/WRITEVECTOR WHICH TAKE ITERATORS
+ *       BETTER YET: MAKE IT CONTAINER GENERIC FRIENDLY
+ *
+ **/
+
 template <class T>
-void writeVector(const vector<T>& v, ostream& out) {
+istream& readVector(vector<T>& v, istream& in) {
+    T element;
+    while(in >> element) {
+        v.push_back(element);
+    }
+    //Clear any flags/errors post-EOF/other error
+    in.clear();
+    return in;
+}
+
+template <class T>
+ostream& writeVector(const vector<T>& v, ostream& out) {
     for(vector<T>::const_iterator i = v.begin(); i != v.end(); ++i) {
         out << *i << " ";
     }
     out << endl;
+    return out;
 }
 
 template <class InputIterator>
