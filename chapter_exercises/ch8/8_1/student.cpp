@@ -38,6 +38,10 @@ double grade_aux(const Student_info& s) {
     }
 }
 
+/**
+ * Generic template function for analysis
+ *
+ **/
 template <class T>
 double analysis(const vector<Student_info>& students, T predicate) {
     vector<double> grades;
@@ -46,12 +50,19 @@ double analysis(const vector<Student_info>& students, T predicate) {
 }
 
 double median_analysis(const vector<Student_info>& students) {
+    return analysis(students, grade_aux);
+}
+
+double average_analysis(const vector<Student_info>& students) {
+    return analysis(students, average_grade);
+}
+/*double median_analysis(const vector<Student_info>& students) {
     vector<double> grades;
     //Using the grade function, let's funnel our elements found between the first two iterators and use the back_
     //inserter to add...
     transform(students.begin(), students.end(), back_inserter(grades), grade_aux);
     return median(grades);
-}
+}*/
 
 //Using function as parameter!!!
 void write_analysis(ostream& out, const string& name,
@@ -70,14 +81,14 @@ double average(const vector<double>& v) {
 double average_grade(const Student_info& s) {
     return grade(s.midterm, s.final, average(s.homework));
 }
-
+/*
 double average_analysis(const vector<Student_info>& students) {
     vector<double> grades;
 
     transform(students.begin(), students.end(), back_inserter(grades), average_grade);
     return median(grades);
 }
-
+*/
 double optimistic_median(const Student_info& s) {
     vector<double> nonzero;
     remove_copy(s.homework.begin(), s.homework.end(), back_inserter(nonzero), 0);
