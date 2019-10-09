@@ -14,6 +14,9 @@ using std::vector;
 template <class InputIterator>
 bool equal(InputIterator begin, InputIterator end, InputIterator begin2);
 
+template <class InputIterator, class T>
+bool find(InputIterator begin, InputIterator end, T val);
+
 template <class T>
 istream& readVector(vector<T>& v, istream& in);
 
@@ -32,11 +35,16 @@ int main() {
     vector<int> v2;
     readVector(v2, cin);
 
-    cout << "Writing your vectors: " << endl;
+    cout << endl << endl << "Writing your vectors: " << endl;
     writeVector(v1, cout);
     writeVector(v2, cout);
+    cout << endl;
 
     cout << "Are they equal?  " << boolalpha << equal(v1.begin(), v1.end(), v2.begin()) << endl;
+    cout << "Let's try finding an element, please input an int that may exist in the first vector: " << endl;
+    int el;
+    cin >> el;
+    cout << "Does " << el << " exist?  " << boolalpha << find(v1.begin(), v1.end(), el) << endl;
 
     return 0;
 
@@ -86,3 +94,16 @@ bool equal(InputIterator begin, InputIterator end, InputIterator begin2) {
     return true;
 
 }
+
+
+template <class InputIterator, class T>
+bool find(InputIterator begin, InputIterator end, T val) {
+    while(begin != end) {
+        if(*begin++ == val) return true;
+    }
+    //If we hit here, we found nothing
+    return false;
+}
+
+
+
