@@ -54,7 +54,7 @@ istream& readVector(vector<T>& v, istream& in) {
 
 template <class T>
 ostream& writeVector(const vector<T>& v, ostream& out) {
-    for(vector<T>::const_iterator i = v.begin(); i != v.end(); ++i) {
+    for(typename vector<T>::const_iterator i = v.begin(); i != v.end(); ++i) {
         out << *i << " ";
     }
     out << endl;
