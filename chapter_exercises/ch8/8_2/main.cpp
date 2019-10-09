@@ -95,8 +95,9 @@ int main() {
     cout << "Enter a value to remove... ";
     removeVal = 0;
     cin >> removeVal;
-    remove(v2.begin(), v2.end(), removeVal);
+    vector<int>::const_iterator removeIt = remove(v2.begin(), v2.end(), removeVal);
     writeVector(v2, cout);
+    cout << "Iterator returned pointing at: " << *removeIt << endl;
     cout << endl;
 
     return 0;
