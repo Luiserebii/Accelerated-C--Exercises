@@ -146,4 +146,16 @@ OutputIterator remove_copy_if(InputIterator begin, InputIterator end, OutputIter
     return destination;
 }
 
+/**
+ * IMPORTANT REGARDING LOGIC ON THIS FUNCTION: CHECK 6.4:
+ * Algorithms, containers, and Iterators (120)
+ *
+ * Essentially, the remove() functions really just move elements which should
+ * stay to the front of the vector, leaving the rest alone, and finally, providing
+ * an iterator pointing to the first of removable elements, thus allowing .erase()
+ * to be called smoothly on it (.erase(res, c.end()))
+ **/
+template <class 
+
+
 #endif
