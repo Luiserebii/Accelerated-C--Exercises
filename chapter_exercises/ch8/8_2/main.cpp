@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <iterator>
 
 #include "./algorithms/algorithms.h"
 
@@ -11,6 +12,7 @@ using std::ostream;
 using std::boolalpha;
 
 using std::vector;
+using std::back_inserter;
 
 
 int main() {
@@ -35,6 +37,9 @@ int main() {
     int el;
     cin >> el;
     cout << "Does " << el << " exist?  " << boolalpha << find(v1.begin(), v1.end(), el) << endl;
+    cout << "Now let's try copy from v1 to v2!" << endl;
+    copy(v1.begin(), v1.end(), back_inserter(v2));
+    cout << writeVector(v2, cout) << endl;
 
     return 0;
 
