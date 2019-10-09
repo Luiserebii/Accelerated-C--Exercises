@@ -63,6 +63,21 @@ int main() {
     bool isFound = fi_it != v1.end();
     cout << "Found?  " << isFound << endl;
     if(isFound) cout << "...and this value is: " << *fi_it << endl;
+    cout << endl;
+
+    //Testing remove_copy(b, e, d, t)
+    cout << "And remove_copy... let's attempt to remove values from the first vector, return as copy" >> endl;
+    vector<int> removeCopy;
+    cout << "Enter a value to remove... ";
+    int removeVal;
+    cin >> removeVal;
+    remove_copy(v1.begin(), v1.end(), back_inserter(removeCopy), removeVal);
+    //Print v1 here to prove it is intact, alongside the copy post-remove
+    cout << "v1: ";
+    writeVector(v1, cout);
+    cout << "removeCopy: ";
+    writeVector(removeCopy, cout);
+    cout << endl;
 
     return 0;
 

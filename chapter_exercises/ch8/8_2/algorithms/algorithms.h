@@ -19,10 +19,6 @@ bool search(InputIterator begin, InputIterator end, InputIterator begin2, InputI
 template <class InputIterator, class T>
 InputIterator find_if(InputIterator begin, InputIterator end, bool predicate(T));
 
-
-template <class InputIterator, class T>
-InputIterator find_if(InputIterator begin, InputIterator end, bool predicate(T));
-
 template <class InputIterator, class OutputIterator, class T>
 OutputIterator remove_copy(InputIterator begin, InputIterator end, OutputIterator destination, T val);
 
