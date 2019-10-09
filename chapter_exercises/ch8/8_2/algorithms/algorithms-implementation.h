@@ -154,8 +154,28 @@ OutputIterator remove_copy_if(InputIterator begin, InputIterator end, OutputIter
  * stay to the front of the vector, leaving the rest alone, and finally, providing
  * an iterator pointing to the first of removable elements, thus allowing .erase()
  * to be called smoothly on it (.erase(res, c.end()))
+ *
+ * Just realized; no swap happens, it's just set to the beginning, for example: 
+ *
+ * 0 1 2 3 4 5 6 7 8 9 10
+ *
+ * Becomes:
+ *
+ * 1 3 5 7 9 5 6 7 8 9 10
+ *
+ * post-remove_if(v.begin(), v.end(), isEven)
+ *
+ * For proof, see attached .cpp as testStdRemove.cpp
+ *
  **/
-template <class 
+template <class ForwardIterator, class InputIterator, class T>
+ForwardIterator remove(ForwardIterator begin, InputIterator end, T val) {
+    while(begin != end) {
+    
+    
+    }
+    return 
+}
 
 
 #endif
