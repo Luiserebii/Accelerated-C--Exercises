@@ -111,7 +111,8 @@ bool search(InputIterator begin, InputIterator end, InputIterator begin2, InputI
 template <class InputIterator, class T>
 InputIterator find_if(InputIterator begin, InputIterator end, bool predicate(T)) {
     while(begin != end) {
-        predicate(begin) ? return begin : begin++;
+        if(predicate(begin)) return begin;
+        begin++;
     }
 }
 
