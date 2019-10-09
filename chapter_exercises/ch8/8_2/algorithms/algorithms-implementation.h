@@ -70,4 +70,16 @@ bool find(InputIterator begin, InputIterator end, T val) {
     return false;
 }
 
+
+template <class InputIterator, class OutputIterator>
+void copy(InputIterator begin, InputIterator end, OutputIterator destination) {
+    while(begin != end) {
+        //Advance both, and paste appropriate value to destination
+        //In this case, ++ has higher priority, so what is being set
+        //is the previous value to the previous one
+        *destination++ = *begin++;
+    }
+}
+
+
 #endif

@@ -10,6 +10,9 @@ bool equal(InputIterator begin, InputIterator end, InputIterator begin2);
 template <class InputIterator, class T>
 bool find(InputIterator begin, InputIterator end, T val);
 
+template <class InputIterator, class OutputIterator>
+void copy(InputIterator begin, InputIterator end, OutputIterator destination);
+
 template <class T>
 std::istream& readVector(std::vector<T>& v, std::istream& in);
 
