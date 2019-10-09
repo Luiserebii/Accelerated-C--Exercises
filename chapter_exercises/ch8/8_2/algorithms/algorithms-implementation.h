@@ -91,6 +91,11 @@ bool search(InputIterator begin, InputIterator end, InputIterator begin2, InputI
             InputIterator b = begin;
             InputIterator b2 = begin2;
             
+            //Testing this here whilst checking b2 == end2 below is probably very strange,
+            //one can see this as a if(b2 != end2) while(true) wrapped up in one, however,
+            //hmm... if this was the case first time looping, then we should just return
+            //false at the very beginning if begin2 != end2, as this would be empty range
+            //we'd be looping for
             while(b2 != end2) {
                 //Adding clause to check if we hit the end, for if we did, at this point,
                 //the range is clearly too large, so let's break here
@@ -106,6 +111,8 @@ bool search(InputIterator begin, InputIterator end, InputIterator begin2, InputI
         //Move begin up through the loop
         begin++;
     }
+    //Return false, not found
+    return false;
 }
 
 template <class InputIterator, class T>
