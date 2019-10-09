@@ -38,8 +38,8 @@ int main() {
     cin >> el;
     cout << "Does " << el << " exist?  " << boolalpha << find(v1.begin(), v1.end(), el) << endl;
     cout << "Now let's try copy from v1 to v2!" << endl;
-    copy(v1.begin(), v1.end(), back_inserter(v2));
-    cout << writeVector(v2, cout) << endl;
+    copyI(v1.begin(), v1.end(), back_inserter(v2));
+    writeVector(v2, cout);
 
     return 0;
 
