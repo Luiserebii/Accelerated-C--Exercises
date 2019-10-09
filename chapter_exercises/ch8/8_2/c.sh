@@ -1,2 +1,2 @@
 #!/bin/sh
-g++ *.cpp ./algorithms/*.cpp && ./a.out
+g++ *.cpp && ./a.out

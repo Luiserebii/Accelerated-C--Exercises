@@ -1,3 +1,6 @@
+#ifndef ALGORITHMS_IMPLEMENTATION_h
+#define ALGORITHMS_IMPLEMENTATION_h
+
 #include <iostream>
 #include <vector>
 
@@ -67,5 +70,4 @@ bool find(InputIterator begin, InputIterator end, T val) {
     return false;
 }
 
-
-
+#endif

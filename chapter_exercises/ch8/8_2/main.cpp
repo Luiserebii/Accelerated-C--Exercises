@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#include "algorithms/algorithms.h"
+#include "./algorithms/algorithms.h"
 
 using std::cin;
 using std::cout;
