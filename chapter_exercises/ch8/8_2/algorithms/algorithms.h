@@ -26,7 +26,7 @@ template <class InputIterator, class OutputIterator, class T>
 OutputIterator remove_copy_if(InputIterator begin, InputIterator end, OutputIterator destination, bool predicate(T));
 
 template <class InputIterator, class OutputIterator, class T>
-OutputIterator transform(InputIterator begin, InputIterator end, OutputIterator destination, bool predicate(T));
+OutputIterator transform(InputIterator begin, InputIterator end, OutputIterator destination, T transformer(T));
 
 template <class InputIterator, class T>
 T accumulate(InputIterator begin, InputIterator end, T initVal);

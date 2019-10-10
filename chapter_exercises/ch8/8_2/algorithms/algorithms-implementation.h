@@ -195,9 +195,9 @@ ForwardIterator remove(ForwardIterator begin, InputIterator end, T val) {
 
 
 template <class InputIterator, class OutputIterator, class T>
-OutputIterator transform(InputIterator begin, InputIterator end, OutputIterator destination, bool predicate(T)) {
+OutputIterator transform(InputIterator begin, InputIterator end, OutputIterator destination, T transformer(T)) {
     while(begin != end) {
-        *destination++ = predicate(*begin++);
+        *destination++ = transformer(*begin++);
     }
     return destination;
 }

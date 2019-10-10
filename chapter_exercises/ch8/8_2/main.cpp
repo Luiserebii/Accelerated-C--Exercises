@@ -104,8 +104,8 @@ int main() {
     //Testing transform(b, e, d, f)
     cout << "And transform... all of the elements in the first vector x2" << endl;
     vector<int> transformVec;
-    transform(v1.begin(), v1.end(), transformVec, timesTwo);
-    writeVector(v2, cout);
+    transform(v1.begin(), v1.end(), back_inserter(transformVec), timesTwo);
+    writeVector(transformVec, cout);
     cout << endl;
 
     //Testing accumulate(b, e, t)
@@ -118,7 +118,7 @@ int main() {
     cout << "And partition... splitting even numbers from the odd of the first vector" << endl;
     vector<int> partVec = v1;
     partition(v1.begin(), v1.end(), isEven);
-    writeVector(v2, cout);
+    writeVector(v1, cout);
     cout << endl;
 
     return 0;
