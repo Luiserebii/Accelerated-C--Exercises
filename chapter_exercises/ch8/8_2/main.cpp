@@ -16,6 +16,7 @@ using std::back_inserter;
 
 //Our test predicate
 bool isEven(int i);
+int timesTwo(int n);
 
 int main() {
     
@@ -100,10 +101,34 @@ int main() {
     cout << "Iterator returned pointing at: " << *removeIt << endl;
     cout << endl;
 
+    //Testing transform(b, e, d, f)
+    cout << "And transform... all of the elements in the first vector x2" << endl;
+    vector<int> transformVec;
+    transform(v1.begin(), v1.end(), transformVec, timesTwo);
+    writeVector(v2, cout);
+    cout << endl;
+
+    //Testing accumulate(b, e, t)
+    cout << "And accumulate... the sum of all of the elements of the first vector" << endl;
+    int sum = accumulate(v1.begin(), v1.end(), 0);
+    cout << "Result:  " << sum << endl;
+    cout << endl;
+
+    //Testing partition(b, e, p)
+    cout << "And partition... splitting even numbers from the odd of the first vector" << endl;
+    vector<int> partVec = v1;
+    partition(v1.begin(), v1.end(), isEven);
+    writeVector(v2, cout);
+    cout << endl;
+
     return 0;
 
 }
 
 bool isEven(int i) {
     return i % 2 == 0;
+}
+
+int timesTwo(int n) {
+    return n * 2;
 }
