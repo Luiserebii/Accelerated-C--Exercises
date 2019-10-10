@@ -61,6 +61,13 @@ template <class Bi> void reverseStd(Bi begin, Bi end) {
     }
 }
 
+/**
+ * We can't exchange the values of *beg and *end directly, as we do not know the types
+ * of the values, and we don't obtain that within the template function. We would need
+ * to rely on a seperate function to handle that for us... I see. This is my guess
+ **/
+
+
 template <class T>
 void swap(T& val1, T& val2) {
     T temp = val1;
