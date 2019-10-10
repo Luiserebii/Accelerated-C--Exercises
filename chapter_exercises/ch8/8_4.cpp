@@ -5,7 +5,10 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+using std::vector;
+
 template <class Bi> void reverse(Bi begin, Bi end);
+template <class Bi> void reverseStd(Bi begin, Bi end);
 
 template <class T>
 std::istream& readVector(std::vector<T>& v, std::istream& in);
@@ -19,8 +22,17 @@ int main() {
     cout << "Please enter an int vector: " << endl;
     vector<int> v;
     readVector(v, cin);
+    vector<int> vc = v;
+
+    //Test our implemntation with swap
+    cout << "Our implementation: " << endl;
     reverse(v.begin(), v.end());
     writeVector(v, cout);
+
+    //Test standard library
+    cout << "Standard library implementation (std::swap)" << endl;
+    reverseStd(vc.begin(), vc.end());
+    writeVector(vc, cout);
 
 }
 
@@ -36,6 +48,14 @@ template <class Bi> void reverse(Bi begin, Bi end) {
         --end;
         if(begin != end)
             swap(*begin++, *end);
+    }
+}
+
+template <class Bi> void reverseStd(Bi begin, Bi end) {
+    while(begin != end) {
+        --end;
+        if(begin != end)
+            std::swap(*begin++, *end);
     }
 }
 
