@@ -9,6 +9,8 @@ using std::vector;
 
 template <class Bi> void reverse(Bi begin, Bi end);
 template <class Bi> void reverseStd(Bi begin, Bi end);
+template <class T>
+void swap(T& val1, T& val2);
 
 template <class T>
 std::istream& readVector(std::vector<T>& v, std::istream& in);
@@ -58,6 +60,14 @@ template <class Bi> void reverseStd(Bi begin, Bi end) {
             std::swap(*begin++, *end);
     }
 }
+
+template <class T>
+void swap(T& val1, T& val2) {
+    T temp = val1;
+    val1 = val2;
+    val2 = temp;
+}
+
 
 template <class T>
 std::istream& readVector(std::vector<T>& v, std::istream& in) {
