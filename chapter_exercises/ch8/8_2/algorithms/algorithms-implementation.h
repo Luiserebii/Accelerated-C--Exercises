@@ -194,4 +194,23 @@ ForwardIterator remove(ForwardIterator begin, InputIterator end, T val) {
 }
 
 
+template <class InputIterator, class OutputIterator, class T>
+OutputIterator transform(InputIterator begin, InputIterator end, OutputIterator destination, bool predicate(T)) {
+    while(begin != end) {
+        *destination++ = predicate(*begin++);
+    }
+    return destination;
+}
+
+template <class InputIterator, class T>
+T accumulate(InputIterator begin, InputIterator end, T initVal) {
+    T sum = initVal;
+    while(begin != end) {
+        sum += *begin++;
+    }
+    return sum;
+}
+
+//Implement stable_partition too, I have an idea for fun
+
 #endif
