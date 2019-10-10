@@ -211,6 +211,21 @@ T accumulate(InputIterator begin, InputIterator end, T initVal) {
     return sum;
 }
 
+template <class ForwardIterator, class T>
+ForwardIterator partition(ForwardIterator begin, ForwardIterator end, bool predicate(T)) {
+    ForwardIterator swapptr = begin;
+    while(begin != end) {
+        if(!predicate(*begin)) {
+            T val = *swapptr;
+            *swapptr++ = *begin;
+            *begin++ = val;
+        } else {
+            ++begin;
+        }
+    }
+    return swapptr;
+}
+
 //Implement stable_partition too, I have an idea for fun
 
 #endif
