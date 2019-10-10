@@ -23,6 +23,6 @@ class Student_info {
 };
 
 bool compare(const Student_info& x, const Student_info& y);
-istream& read_hw(istream& in, vector<double>& hw);
+std::istream& read_hw(std::istream& in, std::vector<double>& hw);
 
 #endif
