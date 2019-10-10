@@ -4,18 +4,6 @@
 #include <iostream>
 #include <vector>
 
-#include "algorithms.h"
-
-using std::cin;
-using std::cout;
-using std::endl;
-using std::istream;
-using std::ostream;
-using std::boolalpha;
-
-using std::vector;
-
-
 /**
  *
  * IDEA: MAKE VERSION OF READVECTOR/WRITEVECTOR WHICH TAKE ITERATORS
@@ -24,7 +12,7 @@ using std::vector;
  **/
 
 template <class T>
-istream& readVector(vector<T>& v, istream& in) {
+std::istream& readVector(std::vector<T>& v, std::istream& in) {
     T element;
     while(in >> element) {
         v.push_back(element);
@@ -35,11 +23,11 @@ istream& readVector(vector<T>& v, istream& in) {
 }
 
 template <class T>
-ostream& writeVector(const vector<T>& v, ostream& out) {
-    for(typename vector<T>::const_iterator i = v.begin(); i != v.end(); ++i) {
+std::ostream& writeVector(const std::vector<T>& v, std::ostream& out) {
+    for(typename std::vector<T>::const_iterator i = v.begin(); i != v.end(); ++i) {
         out << *i << " ";
     }
-    out << endl;
+    out << std::endl;
     return out;
 }
 

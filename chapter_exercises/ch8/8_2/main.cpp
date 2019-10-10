@@ -117,8 +117,9 @@ int main() {
     //Testing partition(b, e, p)
     cout << "And partition... splitting even numbers from the odd of the first vector" << endl;
     vector<int> partVec = v1;
-    partition(v1.begin(), v1.end(), isEven);
+    vector<int>::const_iterator partIt = partition(v1.begin(), v1.end(), isEven);
     writeVector(v1, cout);
+    cout << "Iterator returned pointing at: " << *partIt << endl;
     cout << endl;
 
     return 0;
