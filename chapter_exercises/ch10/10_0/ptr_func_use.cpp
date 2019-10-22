@@ -16,6 +16,15 @@ In find_if(In begin, In end, Pred f);
 
 bool is_negative(int n);
 
+template <class T>
+fillVector(vector<T>& v, vector<T>::size_type lim);
+
+template <class T>
+toStringVector(const vector<T>& v);
+
+template <class In>
+toStringContainer(T begin, T end);
+
 
 int main() {
 
@@ -45,13 +54,14 @@ fillVector(vector<T>& v, vector<T>::size_type lim) {
 
 template <class T>
 toStringVector(const vector<T>& v) {
-    while()
+    return toStringContainer(v.begin(), v.end());
 }
 
 template <class In>
 toStringContainer(T begin, T end) {
     string s = "";
     while(begin != end)
-        s += beg
-
+        s += *begin++;
+        s += " ";
+    return s;
 }
