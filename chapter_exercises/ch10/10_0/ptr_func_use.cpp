@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <vector>
 #include <string>
+#include <sstream>
 
 using std::cout;
 using std::endl;
@@ -12,7 +13,7 @@ using std::srand;
 using std::rand;
 using std::vector;
 using std::string;
-
+using std::stringstream;
 
 template <class In, class Pred>
 In find_if(In begin, In end, Pred f);
@@ -23,7 +24,7 @@ template <class T>
 void fillVector(vector<T>& v, typename vector<T>::size_type lim);
 
 template <class T>
-void toStringVector(const vector<T>& v);
+string toStringVector(const vector<T>& v);
 
 template <class In>
 string toStringContainer(In begin, In end);
@@ -52,20 +53,25 @@ bool is_negative(int n) {
 
 template <class T>
 void fillVector(vector<T>& v, typename vector<T>::size_type lim) {
-    for(typename vector<T>::size_type i = 0; i < lim; ++i)
-        v.push_back(rand() % 10);
+    for(typename vector<T>::size_type i = 0; i < lim; ++i) {
+        int n = rand() % 10;
+        if(rand() % 5 == 0)
+            n *= -1;
+        v.push_back(n);
+    }
 }
 
 template <class T>
-void toStringVector(const vector<T>& v) {
+string toStringVector(const vector<T>& v) {
     return toStringContainer(v.begin(), v.end());
 }
 
 template <class In>
 string toStringContainer(In begin, In end) {
-    string s = "";
-    while(begin != end)
-        s += *begin++;
-        s += " ";
-    return s;
+    stringstream ss;
+    while(begin != end) { 
+        ss << *begin++ << " "; 
+    }
+    ss << endl;
+    return ss.str();
 }
