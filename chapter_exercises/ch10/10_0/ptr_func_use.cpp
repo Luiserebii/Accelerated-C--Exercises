@@ -37,6 +37,9 @@ int main() {
 
     fillVector(v, 10);
     cout << "vector: " << toStringVector(v);
+
+    vector<int>::iterator i = find_if(v.begin(), v.end(), is_negative);
+    i != v.end() ? cout << "Found \"" << *i << "\"" << endl : cout << "Nothing :(" << endl;
 }
 
 template <class In, class Pred>
