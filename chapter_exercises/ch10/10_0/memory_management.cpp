@@ -1,8 +1,9 @@
 /**
  * Outlining different kinds of memory management
  */
-
-
+void automatic();
+int* getStaticPointer();
+int* dynamic();
 
 /**
  * Automatic: system allocates memory to local variables and frees
@@ -24,7 +25,20 @@ int* getStaticPointer() {
     //Allocate this memory as soon as the program begins! Only one
     //space for this var.
     static int x;
-    return &x; // return the pointer to the static var
+    return &x; //return the pointer to the static var
 }
 
-/
+/**
+ * Dynamic: Dynamically allocated memory, which allocates and de-allocates
+ * memory on request.
+ *
+ * Typically uses "new" and "delete" keywords.
+ *
+ */
+int* dynamic() {
+    //Allocate memory for an int
+    int* p = new int(99);
+
+    //Return the pointer; this will not be destroyed on end of scope
+    return p; 
+}
