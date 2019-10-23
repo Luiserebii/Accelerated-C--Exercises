@@ -1,9 +1,28 @@
 /**
  * Outlining different kinds of memory management
  */
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 void automatic();
 int* getStaticPointer();
 int* dynamic();
+
+int main() {
+
+    int* meme = dynamic();
+    cout << "Obtained var at address: " << meme << endl;
+    cout << "Here's the val: " << *meme << endl;
+    *meme = 100000;
+    cout << "Changed to: " << *meme << endl;
+    cout << "Deallocating now" << endl;
+    delete meme;
+    cout << "Address stays?: " << meme << endl;
+    cout << "...and, what if we read? " << *meme << endl;
+}
+
 
 /**
  * Automatic: system allocates memory to local variables and frees
