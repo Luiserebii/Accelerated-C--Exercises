@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 
+using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
@@ -9,8 +10,10 @@ using std::string;
 string letter_grade(double grade);
 
 int main() {
-
-
+    cout << "Please type in a grade... ";
+    double g;
+    cin >> g;
+    cout << "This is a " << letter_grade(g) << endl;
 
 }
 
