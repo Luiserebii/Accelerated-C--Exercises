@@ -1,44 +1,8 @@
+#include "string_list.h"
+#include "node/node.h"
 #include <string>
 
 using std::string;
-
-class Node {
-    public:
-        Node();
-        Node(string s);
-        Node(string s, Node* n);
-
-        string str;
-        Node* next;
-};
-
-class StringList {
-
-    private:
-        Node head;
-
-    public:
-        StringList();
-        void push_back(string s);
-        
-
-};
-
-Node::Node() {
-    next = NULL;    
-}
-
-Node::Node(string s) {
-    str = s;
-    next = NULL;
-}
-
-Node::Node(string s, Node* n) {
-    str = s;
-    next = n;
-}
-
-
 
 StringList::StringList() {
 }
