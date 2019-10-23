@@ -4,8 +4,20 @@
 #include <algorithm>
 #include <stdexcept>
 
+/**
+ * Note post-10.3 testing program:
+ *
+ * This is a bit of an awkward implementation here; we rely on being passed
+ * a value, which doesn't matter in the program, but we use it in order to
+ * determine the typing return value for the template during the whole
+ * compile-link-process. 
+ *
+ * The limitation of this, is that it does not work for containers that do 
+ * not support random-access iterators like lists.
+ *
+ */
 template <class RandomAccess, class T>
-T median(RandomAccess begin, RandomAccess end){
+T median(RandomAccess begin, RandomAccess end, T){
 
     //size_t for generic size of an object
     size_t size = 0;
@@ -16,7 +28,7 @@ T median(RandomAccess begin, RandomAccess end){
         throw std::domain_error("median of an empty container");
 
     //Sort numerically
-    sort(begin, end);
+    std::sort(begin, end);
 
     //Obtain midpoint index
     size_t mid = size/2;
