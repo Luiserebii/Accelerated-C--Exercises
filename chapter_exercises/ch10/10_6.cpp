@@ -12,8 +12,7 @@ using std::string;
 using std::find_if;
 using std::isspace;
 
-template <class Out>
-void split(const std::string& str, Out os);
+void split(const std::string& str, StringList& sl);
 
 bool space(char c);
 bool not_space(char c);
@@ -28,11 +27,19 @@ int main() {
 
     StringList::iterator it = s.begin();
     cout << *it++ << " " << *it << endl;
+
+    cout << "=========================" << endl << endl;
+
+    StringList sp;
+    split("Hello my meme !", sp);
+
+    for(StringList::iterator i = sp.begin(); i != sp.end(); ++i) {
+        cout << *i << endl;
+    }
 }
 
 
-template <class Out>
-void split(const string& str, Out os) {
+void split(const string& str, StringList& sl) {
 
     typedef string::const_iterator iter;
 
@@ -46,7 +53,7 @@ void split(const string& str, Out os) {
 
         //Copy the characters in [i, j)
         if (i != str.end())
-            *os++ = string(i, j);
+            sl.push_back(string(i, j));
 
         i = j;
     }
