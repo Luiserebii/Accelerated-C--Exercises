@@ -14,6 +14,7 @@ using std::copy;
 
 StringList::StringList() {
     a = NULL;
+    size = 0;
 }
 
 void StringList::expand(size_t sz) {

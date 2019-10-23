@@ -6,8 +6,8 @@
 class StringList {
 
     private:
-        //Array of strings
-        string* a;
+        //Array of std::strings
+        std::string* a;
         size_t size;
         
         void expand(size_t size);
@@ -16,7 +16,7 @@ class StringList {
         StringList();
         void push_back(std::string s);
 
-        string* getStringArr();
+        std::string* getStringArr();
 };
 
 #endif

@@ -1,1 +1,1 @@
-g++ *.cpp node/*.cpp && ./a.out
+g++ *.cpp && ./a.out
