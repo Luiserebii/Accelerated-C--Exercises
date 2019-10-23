@@ -13,6 +13,7 @@ class StringList {
         StringList();
         void push_back(std::string s);
 
+        Node getHead();
 };
 
 #endif

@@ -9,11 +9,19 @@ StringList::StringList() {
 
 void StringList::push_back(string s) {
     Node* n = &head;
-    while(n->next != NULL) {
-        n = n->next;
+    if(n->str == ""){
+        n->str = s;
+    } else {
+        while(n->next != NULL) {
+            n = n->next;
+        }
+        //Allocate memory for new Node
+        Node* a = new Node(s);
+        //Link last node to newly added one
+        n->next = a;
     }
-    //Allocate memory for new Node
-    Node* a = new Node(s);
-    //Link last node to newly added one
-    n->next = a;
+}
+
+Node StringList::getHead() {
+    return head;
 }
