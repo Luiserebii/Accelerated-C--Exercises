@@ -2,6 +2,16 @@
 
 using std::string;
 
+class Node {
+    public:
+        Node();
+        Node(string s);
+        Node(string s, Node* n);
+
+        string str;
+        Node* next;
+};
+
 class StringList {
 
     private:
@@ -14,23 +24,13 @@ class StringList {
 
 };
 
-class Node {
-    public:
-        Node();
-        Node(string s);
-        Node(string s, Node* n);
-
-        string str;
-        Node* next;
-};
-
 Node::Node() {
-    Node* next = NULL;    
+    next = NULL;    
 }
 
 Node::Node(string s) {
     str = s;
-    Node* next = NULL;
+    next = NULL;
 }
 
 Node::Node(string s, Node* n) {
@@ -38,17 +38,20 @@ Node::Node(string s, Node* n) {
     next = n;
 }
 
+
+
 StringList::StringList() {
 }
 
 void StringList::push_back(string s) {
-    Node n = head;
-    while(n.next != NULL) {
-        n = *next;
+    Node* n = &head;
+    while(n->next != NULL) {
+        n = n->next;
     }
-    Node a = new Node();
-    a.s = 
-
+    //Allocate memory for new Node
+    Node* a = new Node(s);
+    //Link last node to newly added one
+    n->next = a;
 }
 
 int main() {
