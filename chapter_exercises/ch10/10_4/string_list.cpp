@@ -20,15 +20,25 @@ class Node {
         Node(string s);
         Node(string s, Node* n);
 
-        string s;
+        string str;
         Node* next;
 };
 
+Node::Node() {
+    Node* next = NULL;    
+}
+
+Node::Node(string s) {
+    str = s;
+    Node* next = NULL;
+}
+
+Node::Node(string s, Node* n) {
+    str = s;
+    next = n;
+}
 
 StringList::StringList() {
-    Node n;
-    n.next = NULL;
-    head = n;
 }
 
 void StringList::push_back(string s) {
