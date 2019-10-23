@@ -17,8 +17,3 @@ void StringList::push_back(string s) {
     //Link last node to newly added one
     n->next = a;
 }
-
-int main() {
-
-}
-
