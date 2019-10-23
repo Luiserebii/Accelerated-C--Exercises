@@ -17,9 +17,10 @@ class StringList {
         void push_back(std::string s);
 
         std::string* getStringArr();
-        std::string* begin();
-    
+
         typedef std::string* iterator;
+        iterator begin();
+        iterator end();
 };
 
 #endif

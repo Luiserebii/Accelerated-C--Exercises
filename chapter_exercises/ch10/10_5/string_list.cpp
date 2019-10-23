@@ -50,6 +50,10 @@ string* StringList::getStringArr() {
     return a;
 }
 
-string* StringList::begin() {
+StringList::iterator StringList::begin() {
     return a;
+}
+
+StringList::iterator StringList::end() {
+    return a + size;
 }
