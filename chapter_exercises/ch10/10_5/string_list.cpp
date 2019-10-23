@@ -49,3 +49,7 @@ void StringList::push_back(string s) {
 string* StringList::getStringArr() {
     return a;
 }
+
+string* StringList::begin() {
+    return a;
+}

@@ -14,6 +14,8 @@ int main() {
     s.push_back("world!");
 
     cout << "Printing string: " << endl;
-    cout << s.getStringArr()[0] << " " << s.getStringArr()[1] << endl;
+
+    StringList::iterator it = s.begin();
+    cout << *it++ << " " << *it << endl;
 }
 
