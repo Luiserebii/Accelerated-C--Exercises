@@ -8,8 +8,9 @@ class StringList {
     private:
         //Array of strings
         string* a;
+        size_t size;
         
-        void increaseArr();
+        void expand(size_t size);
 
     public:
         StringList();

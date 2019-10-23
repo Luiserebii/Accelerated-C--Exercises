@@ -1,7 +1,9 @@
 #include "string_list.h"
 #include <string>
+#include <algorithm>
 
 using std::string;
+using std::copy;
 
 /**
  * Our other implementation, the psuedo-linked-list, we can't write a 
@@ -14,17 +16,33 @@ StringList::StringList() {
     a = NULL;
 }
 
+void StringList::expand(size_t sz) {
+    //If we're fresh, then initialize
+    if(a == NULL) {
+        a = new string[sz];
+        size = sz;
+    } else {
+        //Create new array
+        string* n = new string[sz];
 
+        //Copy contents over
+        copy(a, a + size, n);
+
+        //Delete old array, set new one
+        delete[] a;
+        a = n;
+
+        //Set new size
+        size = sz;
+    }
+}
 
 void StringList::push_back(string s) {
-    //If we're at the head, stick it in a new one
-    if(a == NULL) {
-        a = new string[0];
-        *a = s;
-    } else {
-        
-    }
-
+    //Increment and expand size by one
+    expand(size + 1);
+    
+    //Set new blank element
+    a[size - 1] = s;
 }
 
 string* StringList::getStringArr() {
