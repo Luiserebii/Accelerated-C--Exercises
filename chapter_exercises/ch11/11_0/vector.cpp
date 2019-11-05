@@ -1,9 +1,28 @@
+#include <memory>
+
 template <class T>
 class Vec {
 
     private: 
         T* data; //Pointer to the head of the array
-        T* limit; //Pointer to +1 after the end of the array
+        T* avail; //Pointer to +1 after the end of the initialized elements
+        T* limit; //Pointer to +1 after the end of the allocated elements
+
+        //Class offering facilities for memory allocation
+        allocator<T> alloc;
+
+        void create();
+        //Allocate memory, and set this one value x times throughout
+        void create(size_type n, const T& val);
+        //Allocate memory, and copy the values of this iterator into memory
+        void create(const_iterator i, const_iterator j);
+
+        void uncreate();
+
+        //Grow the vector by allocating memory, pushing limit forward
+        void grow();
+        //Simply append a value to a pointer (such as the one at avail)
+        void unchecked_append(const T&);
 
     public:
 
@@ -28,7 +47,7 @@ class Vec {
         Vec& operator=(const Vec&);
         ~Vec() { uncreate(); }
 
-        size_type size() const { return limit - data; }
+        size_type size() const { return avail - data; }
 
         //Operators
         //Set of functions for the overloaded operator [].
@@ -40,8 +59,16 @@ class Vec {
         iterator begin() { return data; }
         const_iterator begin() const { return data; }
 
-        iterator end() { return limit; }
-        const_iterator end() const { return limit; }
+        iterator end() { return avail; }
+        const_iterator end() const { return avail; }
+    
+        //Functions
+        void push_back(const T& val) {
+            if(avail == limit) {
+                grow();
+            }
+            unchecked_append(val);
+        }
 
 }
 
