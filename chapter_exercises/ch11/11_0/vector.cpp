@@ -126,3 +126,22 @@ void Vec<T>::uncreate() {
     //Reset pointers to 0
     data = limit = avail = 0;
 }
+
+template <class T> void Vec<T>::grow() {
+    //Calculate new size, max() to get at least 1 (in case vec size is 0)
+    size_type new_size = max(2 * (limit - data), ptrdiff_t(1));
+
+    //Allocate new space
+    iterator new_data = alloc.allocate(new_size);
+    //Copy in old data into new space
+    iterator new_avail = uninitialized_copy(data, avail, new_data);
+
+    //Finally, clear memory
+    uncreate();
+
+    //And, set pointers as they should be to accomodate new memory
+    data = new_data;
+    avail = new_avail;
+    limit = data + new_size;
+    
+}
