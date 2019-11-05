@@ -1,8 +1,6 @@
 #include <memory>
 #include <cstdlib>
 
-using std::allocator;
-
 template <class T>
 class Vec {
 
@@ -58,7 +56,7 @@ class Vec {
         T* limit; //Pointer to +1 after the end of the allocated elements
 
         //Class offering facilities for memory allocation
-        allocator<T> alloc;
+        std::allocator<T> alloc;
 
         void create();
         //Allocate memory, and set this one value x times throughout
