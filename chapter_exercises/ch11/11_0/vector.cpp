@@ -93,13 +93,36 @@ void Vec<T>::create() {
 
 template <class T>
 void Vec<T>::create(size_type n, const T& val) {
+    //Using allocate(size_t), allocate x amounts into memory and return pointer to the head
     data = alloc.allocate(n);
+    //Set the limit and avail iterators to the same point after the end of allocated memory, as...
     limit = avail = data + n;
+    //Fill all of the uninitialized pointers with val, in [data, limit)
     uninitialized_fill(data, limit, val);
 }
 
 template <class T>
 void Vec<T>::create(const_iterator i, const_iterator j) {
+    //Using allocate(size_t), allocate the number of pointers (size) between iterators
     data = alloc.allocate(j - i);
+    //Set both the limit and avail to the pointer returned by uninitialized_copy(), 
+    //which takes a range and copies into data, assumed to be uninitialized
     limit = avail = uninitialized_copy(i, j, data);
+}
+
+template <class T>
+void Vec<T>::uncreate() {
+    //If there is data, (i.e. not 0; look does up, do non-zero values eval to true?)
+    //   alloc.deallocate(T*, size_t) does not take a non-zero pointer, so needed! 
+    if(data) {
+        //Destroy the elements constructed in reverse order
+        iterator it = avail;
+        while(it != data) {
+            alloc.destroy(--it);
+        }
+        //Return space allocated, by deallocating
+        alloc.deallocate(data, limit - data);
+    }
+    //Reset pointers to 0
+    data = limit = avail = 0;
 }
