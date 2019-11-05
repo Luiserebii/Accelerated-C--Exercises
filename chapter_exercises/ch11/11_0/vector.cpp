@@ -1,28 +1,10 @@
 #include <memory>
+#include <cstdlib>
+
+using std::allocator;
 
 template <class T>
 class Vec {
-
-    private: 
-        T* data; //Pointer to the head of the array
-        T* avail; //Pointer to +1 after the end of the initialized elements
-        T* limit; //Pointer to +1 after the end of the allocated elements
-
-        //Class offering facilities for memory allocation
-        allocator<T> alloc;
-
-        void create();
-        //Allocate memory, and set this one value x times throughout
-        void create(size_type n, const T& val);
-        //Allocate memory, and copy the values of this iterator into memory
-        void create(const_iterator i, const_iterator j);
-
-        void uncreate();
-
-        //Grow the vector by allocating memory, pushing limit forward
-        void grow();
-        //Simply append a value to a pointer (such as the one at avail)
-        void unchecked_append(const T&);
 
     public:
 
@@ -40,7 +22,7 @@ class Vec {
 
         //Constructors
         Vec() { create(); }
-        explicit Vec(std::size_t n const T& val=T()) { create(n, val); }
+        explicit Vec(std::size_t n, const T& val=T()) { create(n, val); }
 
         //Copy, assignment, destructor
         Vec(const Vec& v) { create(v.begin(), v.end()); }
@@ -70,7 +52,28 @@ class Vec {
             unchecked_append(val);
         }
 
-}
+    private: 
+        T* data; //Pointer to the head of the array
+        T* avail; //Pointer to +1 after the end of the initialized elements
+        T* limit; //Pointer to +1 after the end of the allocated elements
+
+        //Class offering facilities for memory allocation
+        allocator<T> alloc;
+
+        void create();
+        //Allocate memory, and set this one value x times throughout
+        void create(size_type n, const T& val);
+        //Allocate memory, and copy the values of this iterator into memory
+        void create(const_iterator i, const_iterator j);
+
+        void uncreate();
+
+        //Grow the vector by allocating memory, pushing limit forward
+        void grow();
+        //Simply append a value to a pointer (such as the one at avail)
+        void unchecked_append(const T&);
+
+};
 
 template<class T>
 Vec<T>& Vec<T>::operator=(const Vec& rhs) {
