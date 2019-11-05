@@ -7,7 +7,6 @@ class Vec {
 
     public:
 
-
         //Iterator Types
         typedef T* iterator; 
         typedef const T* const_iterator;
@@ -21,15 +20,17 @@ class Vec {
         typedef const T& const_reference;
 
         //Constructors
-        Vec(const Vec& v) { create(v.begin(), v.end()); } //Copy constructor
         Vec() { create(); }
         explicit Vec(std::size_t n const T& val=T()) { create(n, val); }
+
+        //Copy, assignment, destructor
+        Vec(const Vec& v) { create(v.begin(), v.end()); }
+        Vec& operator=(const Vec&);
+        ~Vec() { uncreate(); }
 
         size_type size() const { return limit - data; }
 
         //Operators
-        Vec& operator=(const Vec&);
-        
         //Set of functions for the overloaded operator [].
         //Note that "const" functions can be overloaded
         T& operator[](size_type i) { return data[i]; }
