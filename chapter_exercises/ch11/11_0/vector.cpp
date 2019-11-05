@@ -86,4 +86,20 @@ Vec<T>& Vec<T>::operator=(const Vec& rhs) {
     return *this;
 }
 
+template <class T>
+void Vec<T>::create() {
+    data = avail = limit = 0;
+}
 
+template <class T>
+void Vec<T>::create(size_type n, const T& val) {
+    data = alloc.allocate(n);
+    limit = avail = data + n;
+    uninitialized_fill(data, limit, val);
+}
+
+template <class T>
+void Vec<T>::create(const_iterator i, const_iterator j) {
+    data = alloc.allocate(j - i);
+    limit = avail = uninitialized_copy(i, j, data);
+}
