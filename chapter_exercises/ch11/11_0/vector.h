@@ -133,7 +133,7 @@ void Vec<T>::uncreate() {
 template <class T>
 void Vec<T>::grow() {
     //Calculate new size, max() to get at least 1 (in case vec size is 0)
-    size_type new_size = max(2 * (limit - data), ptrdiff_t(1));
+    size_type new_size = max(2 * (limit - data), std::ptrdiff_t(1));
 
     //Allocate new space
     iterator new_data = alloc.allocate(new_size);
