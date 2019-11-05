@@ -7,6 +7,7 @@ class Vec {
 
     public:
 
+
         //Iterator Types
         typedef T* iterator; 
         typedef const T* const_iterator;
@@ -19,11 +20,16 @@ class Vec {
         typedef T& reference;
         typedef const T& const_reference;
 
+        //Constructors
+        Vec(const Vec& v) { create(v.begin(), v.end()); } //Copy constructor
         Vec() { create(); }
         explicit Vec(std::size_t n const T& val=T()) { create(n, val); }
 
         size_type size() const { return limit - data; }
 
+        //Operators
+        Vec& operator=(const Vec&);
+        
         //Set of functions for the overloaded operator [].
         //Note that "const" functions can be overloaded
         T& operator[](size_type i) { return data[i]; }
@@ -35,4 +41,21 @@ class Vec {
 
         iterator end() { return limit; }
         const_iterator end() const { return limit; }
+
 }
+
+template<class T>
+Vec<T>& Vec<T>::operator=(const Vec& rhs) {
+    //Check that value being assigned to isn't the same as the one
+    //already existing in this var
+    if(&rhs != this) {
+        //Free the array
+        uncreate();
+
+        //Create and copy in elements from the right-hand side via iterators
+        create(rhs.begin(), rhs.end());
+    }
+    return *this;
+}
+
+
