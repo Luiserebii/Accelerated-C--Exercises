@@ -1,5 +1,6 @@
 #include <memory>
 #include <cstdlib>
+#include <stdexcept>
 
 template <class T>
 class Vec {
@@ -50,6 +51,7 @@ class Vec {
             unchecked_append(val);
         }
 
+        iterator erase(iterator pos);
         void clear();
 
     private: 
@@ -152,6 +154,33 @@ void Vec<T>::grow() {
 template <class T>
 void Vec<T>::unchecked_append(const T& val) {
     alloc.construct(avail++, val);
+}
+
+template <class T>
+typename Vec<T>::iterator Vec<T>::erase(Vec<T>::iterator pos) {
+    //Check that pos is valid
+    if(pos < size() && pos > -1) {
+
+        typename Vec<T>::iterator t = pos;
+
+        //Shift if not at end
+        if(pos + 1 != avail) {
+            //While we can, shift all values back one
+            while(t + 2 != avail) {
+                *t = *++t;
+            }
+        }
+
+        //Destroy extra element
+        alloc.destroy(avail - 1);
+
+        //Set avail back one
+        --avail;
+
+    } else {
+        throw std::out_of_range("Index passed out of bounds for Vec!");
+    }
+
 }
 
 template <class T>
