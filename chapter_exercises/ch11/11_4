@@ -1,0 +1,8 @@
+Q: How many members does the synthesized Student_info destructor destroy?
+
+Four data members total, one for each one:
+
+string n;
+double midterm;
+double final;
+vector<double> homework;

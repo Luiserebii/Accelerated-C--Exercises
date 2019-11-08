@@ -1,0 +1,4 @@
+Q: What does the synthesized assignment operator for Students_info objects do?
+
+It recursively calls the assignment operator on each data member for the object.
+Built-in types are simply assigned by value.
