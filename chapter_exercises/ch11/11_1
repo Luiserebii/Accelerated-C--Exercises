@@ -1,0 +1,19 @@
+Q: The Student_info structure that we defined in Chapter 9 did not define
+a copy constructor, assignment operator, or destructor. Why not?
+
+The Student_info structure in Chapter 9 did not hold copies of pointers;
+all data types used have their properly implemented copy constructors/
+assignment operators/destructors, enough to have them function well
+when recursively copied/assigned/destructed by default.
+
+Dymanic memory allocation is where we are suddenly responsible for these
+chunks of memory which involve manual allocation/creation/deallocation/
+destruction. Even in new [T], where the allocation and creation is handled
+in one, we still need to destroy it at some point. This thus explains the need
+for destruction, and partially assignment.
+
+Since copies of pointers will point to the same piece of memory, copy/assignment
+does not work as expected recursively; thus requiring copy constructors and 
+assignment operator implementation.
+
+We can thus get away with using the default in the Ch. 9 class.
