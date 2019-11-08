@@ -12,8 +12,8 @@ class Student_info {
     public:
 
         Student_info() { ++constructCount; }
-        Student_info(const Student_info& s) { ++copyCount; name = s.name; midterm = s.name; final = s.final; homework = s.homework; }
-        operator=(const Student_Info& rhs) { ++assignCount; name = s.name; midterm = s.name; final = s.final; homework = s.homework; }
+        Student_info(const Student_info& s) { ++copyCount; name = s.name; midterm = s.midterm; final = s.final; homework = s.homework; }
+        Student_info& operator=(const Student_info& rhs) { ++assignCount; name = rhs.name; midterm = rhs.midterm; final = rhs.final; homework = rhs.homework; return *this; }
         ~Student_info() { ++destroyCount; }
 
 
