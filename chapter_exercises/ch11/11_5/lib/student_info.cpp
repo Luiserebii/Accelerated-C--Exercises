@@ -42,7 +42,13 @@ istream& read_hw(istream& in, vector<double>& hw){
    }
    return in;
 }
-    
+   
+
+int Student_info::constructCount = 0;
+int Student_info::copyCount = 0;
+int Student_info::assignCount = 0;
+int Student_info::destroyCount = 0;
+
 ostream& Student_info::writeCounts(ostream& out) {
     out << "Construct: " << Student_info::constructCount << "| "
        << "Copy: "  << Student_info::copyCount << "| "
