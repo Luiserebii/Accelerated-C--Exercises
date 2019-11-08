@@ -13,9 +13,9 @@ A collection of exercises I am completing to study C++ from the book: "Accelerat
 | **Ch. 6:** Using library algorithms | :heavy_check_mark: |
 | **Ch. 7:** Using associative containers | :heavy_check_mark: |
 | **Ch. 8:** Writing generic functions | :heavy_check_mark: |
-| **Ch. 9:** Defining new types | --- |
+| **Ch. 9:** Defining new types | :heavy_check_mark: |
 | **Ch. 10:** Managing memory and low-level data structures | :heavy_check_mark: |
-| **Ch. 11:** Defining abstract data types |  |
+| **Ch. 11:** Defining abstract data types | :heavy_check_mark: |
 | **Ch. 12:** Making class objects act like values |  |
 | **Ch. 13:** Using inheritance and dynamic binding |  |
 | **Ch. 14:** Managing memory (almost) automatically |  |
