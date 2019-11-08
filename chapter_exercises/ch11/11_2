@@ -1,0 +1,6 @@
+Q: The structure did define a default constructor. Why?
+
+A default constructor was functionally unnecessary, but good practice,
+as synthesized default constructors require all data members to have
+implemented default constructors, thus allowing freedom for a class
+using Student_info to synthesize one.
