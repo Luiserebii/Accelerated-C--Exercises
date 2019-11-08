@@ -11,7 +11,7 @@
 #include "student.h"
 
 //using std::cin;
-//using std::cout;
+using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
@@ -42,7 +42,10 @@ double median_analysis(const vector<Student_info>& students) {
     vector<double> grades;
     //Using the grade function, let's funnel our elements found between the first two iterators and use the back_
     //inserter to add...
+    cout << "Median analysis: transform" << endl;
+    Student_info::writeCounts();
     transform(students.begin(), students.end(), back_inserter(grades), grade_aux);
+    Student_info::writeCounts();
     return median(grades);
 }
 
