@@ -70,7 +70,10 @@ double average_grade(const Student_info& s) {
 double average_analysis(const vector<Student_info>& students) {
     vector<double> grades;
 
+    cout << "Average analysis: transform" << endl;
+    Student_info::writeCounts();
     transform(students.begin(), students.end(), back_inserter(grades), average_grade);
+    Student_info::writeCounts();
     return median(grades);
 }
 
