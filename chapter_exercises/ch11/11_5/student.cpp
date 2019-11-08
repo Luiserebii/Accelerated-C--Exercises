@@ -21,6 +21,7 @@ using std::domain_error;
 using std::transform;
 
 using std::accumulate;
+void writeCounts(const vector<Student_info>& students);
 
 bool did_all_hw(const Student_info& s) {
     return ((find(s.homework.begin(), s.homework.end(), 0)) == s.homework.end());
@@ -43,10 +44,17 @@ double median_analysis(const vector<Student_info>& students) {
     //Using the grade function, let's funnel our elements found between the first two iterators and use the back_
     //inserter to add...
     cout << "Median analysis: transform" << endl;
-    students.writeCounts();
+    writeCounts(students);
     transform(students.begin(), students.end(), back_inserter(grades), grade_aux);
-    students.writeCounts();
+    writeCounts(students);
     return median(grades);
+}
+
+void writeCounts(const vector<Student_info>& students) {
+    vector<Student_info>::const_iterator b = students.begin();
+    while(b != students.end()) {
+        b++->writeCounts();
+    }
 }
 
 //Using function as parameter!!!
@@ -71,9 +79,9 @@ double average_analysis(const vector<Student_info>& students) {
     vector<double> grades;
 
     cout << "Average analysis: transform" << endl;
-    students.writeCounts();
+    writeCounts(students);
     transform(students.begin(), students.end(), back_inserter(grades), average_grade);
-    students.writeCounts();
+    writeCounts(students);
     return median(grades);
 }
 

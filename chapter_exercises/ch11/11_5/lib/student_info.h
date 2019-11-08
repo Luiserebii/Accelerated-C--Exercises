@@ -28,7 +28,7 @@ class Student_info {
         std::vector<double> homework;
 
         //Function to print count vals
-        /*static*/ std::ostream& writeCounts(std::ostream& out=std::cout);
+        /*static*/ std::ostream& writeCounts(std::ostream& out=std::cout) const;
 
 };
 

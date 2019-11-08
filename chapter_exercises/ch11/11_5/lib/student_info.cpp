@@ -49,7 +49,7 @@ int Student_info::copyCount = 0;
 int Student_info::assignCount = 0;
 int Student_info::destroyCount = 0;
 */
-ostream& Student_info::writeCounts(ostream& out) {
+ostream& Student_info::writeCounts(ostream& out) const {
     out << "Construct: " << constructCount << "| "
        << "Copy: "  << copyCount << "| "
        << "Assign: " << assignCount << "| "
