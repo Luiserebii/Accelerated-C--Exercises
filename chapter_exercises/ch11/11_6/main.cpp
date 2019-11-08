@@ -23,7 +23,10 @@ int main() {
     v.erase(v.begin() + 1);
     print(v.begin(), v.end());
     
-
+    //Attempt clear()
+    cout << "Attempting clear: " << endl;
+    v.clear();
+    print(v.begin(), v.end());
 
 }
 
