@@ -2,6 +2,7 @@
 #include <iostream>
 
 using std::istream;
+using std::ostream;
 using std::vector;
 /*
  * Student_info Util
@@ -40,4 +41,11 @@ istream& read_hw(istream& in, vector<double>& hw){
    }
    return in;
 }
+    
+ostream& writeCounts(ostream& out) {
+    out << "Construct: " << Student_info::constructCount << "| "
+       << "Copy: "  << Student_info::copyCount << "| "
+       << "Assign: " << Student_info::assignCount << "| "
+       << "Destroy: " << Student_info::destroyCount << endl;
+};
 
