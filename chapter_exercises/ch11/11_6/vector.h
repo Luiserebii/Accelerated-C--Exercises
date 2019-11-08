@@ -1,6 +1,7 @@
 #include <memory>
 #include <cstdlib>
 #include <stdexcept>
+#include <algorithm>
 
 template <class T>
 class Vec {
@@ -110,9 +111,9 @@ template <class T>
 void Vec<T>::create(const_iterator i, const_iterator j) {
     //Using allocate(size_t), allocate the number of pointers (size) between iterators
     data = alloc.allocate(j - i);
-    //Set both the limit and avail to the pointer returned by uninitialized_copy(), 
+    //Set both the limit and avail to the pointer returned by std::uninitialized_copy(), 
     //which takes a range and copies into data, assumed to be uninitialized
-    limit = avail = uninitialized_copy(i, j, data);
+    limit = avail = std::uninitialized_copy(i, j, data);
 }
 
 template <class T>
@@ -135,12 +136,12 @@ void Vec<T>::uncreate() {
 template <class T>
 void Vec<T>::grow() {
     //Calculate new size, max() to get at least 1 (in case vec size is 0)
-    size_type new_size = max(2 * (limit - data), std::ptrdiff_t(1));
+    size_type new_size = std::max(2 * (limit - data), std::ptrdiff_t(1));
 
     //Allocate new space
     iterator new_data = alloc.allocate(new_size);
     //Copy in old data into new space
-    iterator new_avail = uninitialized_copy(data, avail, new_data);
+    iterator new_avail = std::uninitialized_copy(data, avail, new_data);
 
     //Finally, clear memory
     uncreate();
@@ -159,7 +160,7 @@ void Vec<T>::unchecked_append(const T& val) {
 template <class T>
 typename Vec<T>::iterator Vec<T>::erase(Vec<T>::iterator pos) {
     //Check that pos is valid
-    if(pos < size() && pos > -1) {
+//    if(pos < size() && pos > -1) {
 
         typename Vec<T>::iterator t = pos;
 
@@ -177,9 +178,9 @@ typename Vec<T>::iterator Vec<T>::erase(Vec<T>::iterator pos) {
         //Set avail back one
         --avail;
 
-    } else {
-        throw std::out_of_range("Index passed out of bounds for Vec!");
-    }
+//    } else {
+//        throw std::out_of_range("Index passed out of bounds for Vec!");
+//    }
 
 }
 

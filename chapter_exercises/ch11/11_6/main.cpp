@@ -19,7 +19,7 @@ int main() {
     print(v.begin(), v.end());
 
     //Attempt erase()
-    v.erase(3);
+    v.erase(v.begin() + 3);
     print(v.begin(), v.end());
     
 
