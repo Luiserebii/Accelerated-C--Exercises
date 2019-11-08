@@ -159,29 +159,22 @@ void Vec<T>::unchecked_append(const T& val) {
 
 template <class T>
 typename Vec<T>::iterator Vec<T>::erase(Vec<T>::iterator pos) {
-    //Check that pos is valid
-//    if(pos < size() && pos > -1) {
+    typename Vec<T>::iterator t = pos;
 
-        typename Vec<T>::iterator t = pos;
-
-        //Shift if not at end
-        if(pos + 1 != avail) {
-            //While we can, shift all values back one
-            while(t + 2 != avail) {
-                *t = *++t;
-            }
+    //Shift if not at end
+    if(pos + 1 != avail) {
+        //While we can, shift all values back one
+        while(t + 1 != avail) {
+            *t = *(t + 1);
+            ++t;
         }
+    }
 
-        //Destroy extra element
-        alloc.destroy(avail - 1);
+    //Destroy extra element
+    alloc.destroy(avail - 1);
 
-        //Set avail back one
-        --avail;
-
-//    } else {
-//        throw std::out_of_range("Index passed out of bounds for Vec!");
-//    }
-
+    //Set avail back one
+    --avail;
 }
 
 template <class T>

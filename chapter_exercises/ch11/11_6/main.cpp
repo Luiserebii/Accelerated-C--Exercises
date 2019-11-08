@@ -19,7 +19,8 @@ int main() {
     print(v.begin(), v.end());
 
     //Attempt erase()
-    v.erase(v.begin() + 3);
+    cout << "Attempting erase() at index 1: " << endl;
+    v.erase(v.begin() + 1);
     print(v.begin(), v.end());
     
 
