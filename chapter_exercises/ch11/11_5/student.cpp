@@ -43,9 +43,9 @@ double median_analysis(const vector<Student_info>& students) {
     //Using the grade function, let's funnel our elements found between the first two iterators and use the back_
     //inserter to add...
     cout << "Median analysis: transform" << endl;
-    Student_info::writeCounts();
+    students.writeCounts();
     transform(students.begin(), students.end(), back_inserter(grades), grade_aux);
-    Student_info::writeCounts();
+    students.writeCounts();
     return median(grades);
 }
 
@@ -71,9 +71,9 @@ double average_analysis(const vector<Student_info>& students) {
     vector<double> grades;
 
     cout << "Average analysis: transform" << endl;
-    Student_info::writeCounts();
+    students.writeCounts();
     transform(students.begin(), students.end(), back_inserter(grades), average_grade);
-    Student_info::writeCounts();
+    students.writeCounts();
     return median(grades);
 }
 

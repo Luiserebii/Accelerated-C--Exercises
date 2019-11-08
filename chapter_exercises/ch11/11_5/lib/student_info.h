@@ -18,17 +18,17 @@ class Student_info {
 
 
         //Static variables to keep track of these counts
-        static int constructCount;
-        static int copyCount;
-        static int assignCount;
-        static int destroyCount;
+        /*static*/ int constructCount;
+        /*static*/ int copyCount;
+        /*static*/ int assignCount;
+        /*static*/ int destroyCount;
 
         std::string name;
         double midterm, final;
         std::vector<double> homework;
 
         //Function to print count vals
-        static std::ostream& writeCounts(std::ostream& out=std::cout);
+        /*static*/ std::ostream& writeCounts(std::ostream& out=std::cout);
 
 };
 
