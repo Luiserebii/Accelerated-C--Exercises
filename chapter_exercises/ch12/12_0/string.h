@@ -2,6 +2,7 @@
 #define GUARD_String_h
 
 #include <algorithm>
+#include "vector.h"
 
 class Str {
     
