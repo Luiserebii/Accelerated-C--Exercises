@@ -34,11 +34,18 @@ class Str {
         char& operator[](size_type i) { return data[i]; }
         const char& operator[](size_type i) const { return data[i]; }
 
+        Str& operator+=(const Str& s) {
+            std::copy(s.data.begin(), s.data.end(), std::back_inserter(data));
+            return *this;
+        }
+
         size_type size() const { return data.size(); }
 
     private:
         Vec<char> data;
 };
+
+Str operator+(const Str& s, const Str& t);
 
 inline 
 std::ostream& operator<<(std::ostream& os, const Str& s) {
