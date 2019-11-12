@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <cstring>
+#include <iostream>
 #include "vector.h"
 
 class Str {
@@ -27,8 +28,22 @@ class Str {
             std::copy(b, e, std::back_inserter(data));
         }
 
+        //Operators
+        char& operator[](size_type i) { return data[i]; }
+        const char& operator[](size_type i) const { return data[i]; }
+
+        size_type size() const { return data.size(); }
+
     private:
         Vec<char> data;
 };
+
+inline 
+std::ostream& operator<<(ostream& os, const Str& s) {
+    for(Str::size_type i = 0; i < s.size(); ++i) {
+        os << s[i];
+    }
+    return os;
+}
 
 #endif
