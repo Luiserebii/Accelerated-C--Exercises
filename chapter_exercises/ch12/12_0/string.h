@@ -8,7 +8,7 @@
 
 class Str {
 
-    friend std::ostream& operator>>(std::istream& is, const Str& s);
+    friend std::istream& operator>>(std::istream& is, Str& s);
 
     public:
         typedef Vec<char>::size_type size_type;

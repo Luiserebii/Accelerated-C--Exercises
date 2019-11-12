@@ -3,7 +3,6 @@
 
 using std::istream;
 
-
 istream& operator>>(istream& is, Str& s) {
 
     //Obliterate existing value(s)
