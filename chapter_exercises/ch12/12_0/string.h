@@ -7,7 +7,9 @@
 #include "vector.h"
 
 class Str {
-    
+
+    friend std::ostream& operator>>(std::istream& is, const Str& s);
+
     public:
         typedef Vec<char>::size_type size_type;
 
@@ -39,7 +41,7 @@ class Str {
 };
 
 inline 
-std::ostream& operator<<(ostream& os, const Str& s) {
+std::ostream& operator<<(std::ostream& os, const Str& s) {
     for(Str::size_type i = 0; i < s.size(); ++i) {
         os << s[i];
     }
