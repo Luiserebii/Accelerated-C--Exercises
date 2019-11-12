@@ -2,6 +2,7 @@
 #define GUARD_String_h
 
 #include <algorithm>
+#include <cstring>
 #include "vector.h"
 
 class Str {
@@ -28,6 +29,6 @@ class Str {
 
     private:
         Vec<char> data;
-}
+};
 
 #endif

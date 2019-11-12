@@ -104,7 +104,7 @@ void Vec<T>::create(size_type n, const T& val) {
     //Set the limit and avail iterators to the same point after the end of allocated memory, as...
     limit = avail = data + n;
     //Fill all of the uninitialized pointers with val, in [data, limit)
-    uninitialized_fill(data, limit, val);
+    std::uninitialized_fill(data, limit, val);
 }
 
 template <class T>
