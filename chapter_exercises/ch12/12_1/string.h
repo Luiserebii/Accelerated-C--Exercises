@@ -110,7 +110,7 @@ class Str {
 
 Str operator+(const Str& s, const Str& t);
 std::ostream& operator<<(std::ostream& os, const Str& s);
-
+/*
 void Str::destroy() {
     delete[] data;
     data = 0;
@@ -123,5 +123,5 @@ void Str::construct(const char* b, const char* e) {
     std::copy(b, e, data);
     tail = data + new_size;
 }
-
+*/
 #endif

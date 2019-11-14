@@ -43,3 +43,16 @@ Str operator+(const Str& s, const Str& t) {
     r += t;
     return r;
 }
+
+void Str::destroy() {
+    delete[] data;
+    data = 0;
+    tail = 0;
+}
+
+void Str::construct(const char* b, const char* e) {
+    size_t new_size = e - b;
+    data = new char[new_size];
+    std::copy(b, e, data);
+    tail = data + new_size;
+}
