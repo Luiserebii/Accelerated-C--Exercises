@@ -11,6 +11,8 @@ class Str {
 
     public:
         typedef size_t size_type;
+        typedef char* iterator;
+        typedef const char* const_iterator;
 
         //Default constructor
         Str() { 
@@ -38,27 +40,55 @@ class Str {
             std::copy(b, e, data);
         }
 
+        //Copy constructor, assignment op, destructor
+        Str(const Str& s) {
+            construct(s.begin(), s.end());
+        }
+
+        Str& operator=(const Str& s) {
+            destroy();
+            construct(s.begin(), s.end());
+            return *this;
+        }
+
+        ~Str() {
+            destroy();
+        }
+
         //Operators
         char& operator[](size_type i) { return data[i]; }
         const char& operator[](size_type i) const { return data[i]; }
 
         Str& operator+=(const Str& s) {
+            size_t new_size = s.length() + size();
             //Allocate new
-            char* t = new char[s.length() + size()];
+            char* t = new char[new_size];
             //Copy to new
             std::copy(data, tail, t);
             //Destroy old
-            delete[] data;
+            destroy();
             //Copy new to new
-            std::copy(s.begin(), s.end(), t);
+            std::copy(s.begin(), s.end(), t + size());
+            //Set to new
+            data = t;
+            tail = t + new_size;
             return *this;
         }
+
+        iterator begin() { return data; }
+        const_iterator begin() const { return data; }
+
+        iterator end() { return tail; }
+        const_iterator end() const { return tail; }
 
         size_type size() const { return tail - data; }
 
     private:
         char* data;
         char* tail;
+
+        void destroy();
+        void construct(char* b, char* e);
 };
 
 Str operator+(const Str& s, const Str& t);
@@ -69,6 +99,19 @@ std::ostream& operator<<(std::ostream& os, const Str& s) {
         os << s[i];
     }
     return os;
+}
+
+void Str::destroy() {
+    delete[] data;
+    data = 0;
+    tail = 0;
+}
+
+void Str::construct(char* b, char* e) {
+    size_t new_size = e - b;
+    data = new char[new_size];
+    std::copy(b, e, data);
+    tail = data + new_size;
 }
 
 #endif
