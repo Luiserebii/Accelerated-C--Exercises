@@ -68,10 +68,10 @@ class Str {
             char* t = new char[new_size];
             //Copy to new
             std::copy(data, tail, t);
-            //Destroy old
-            destroy();
             //Copy new to new
             std::copy(s.begin(), s.end(), t + size());
+            //Destroy old
+            destroy();
             //Set to new
             data = t;
             tail = t + new_size;

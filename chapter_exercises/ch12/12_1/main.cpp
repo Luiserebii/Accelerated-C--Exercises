@@ -12,7 +12,7 @@ int main() {
     Str n;
     n = "zoot";
     cout << n << endl;
-    n += "uguu";
+    n += "uguu~";
     cout << n << endl;
 
 }
