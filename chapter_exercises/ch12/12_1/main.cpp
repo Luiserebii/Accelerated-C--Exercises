@@ -7,6 +7,7 @@ using std::endl;
 int main() {
 
     Str s = "meme";
+    cout << s.end() - s.begin() << endl;
     cout << s << endl;
     Str n;
     n = "zoot";

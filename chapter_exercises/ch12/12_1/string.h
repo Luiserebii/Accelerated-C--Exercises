@@ -28,16 +28,19 @@ class Str {
 
         //Create a Str from a null-terminated array of char
         Str(const char* cp) {
-            size_t size = std::strlen(cp);
-            data = new char[size];
-            std::copy(cp, cp + size, data);
+            size_t sz = std::strlen(cp);
+            data = new char[sz];
+            std::copy(cp, cp + sz, data);
+            tail = data + sz;
         }
 
         //Create a Str from the range denoted by iterators b and e
         template <class In>
         Str(In b, In e) {
-            size_t size = e - b;
+            size_t sz = e - b;
+            data = new char[sz];
             std::copy(b, e, data);
+            tail = data + sz;
         }
 
         //Copy constructor, assignment op, destructor
