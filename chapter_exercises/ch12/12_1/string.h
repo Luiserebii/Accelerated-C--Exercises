@@ -60,7 +60,7 @@ class Str {
         const char& operator[](size_type i) const { return data[i]; }
 
         Str& operator+=(const Str& s) {
-            size_t new_size = s.length() + size();
+            size_t new_size = size() + s.size();
             //Allocate new
             char* t = new char[new_size];
             //Copy to new
@@ -69,6 +69,23 @@ class Str {
             destroy();
             //Copy new to new
             std::copy(s.begin(), s.end(), t + size());
+            //Set to new
+            data = t;
+            tail = t + new_size;
+            return *this;
+        }
+
+        Str& operator+=(const char& s) {
+            size_t new_size = size() + 1;
+            //Allocate new
+            char* t = new char[new_size];
+            //Copy to new
+            std::copy(data, tail, t);
+            //Destroy old
+            destroy();
+            //Copy new to new
+            char* n = t + size(); 
+            *n = s;
             //Set to new
             data = t;
             tail = t + new_size;
@@ -88,7 +105,7 @@ class Str {
         char* tail;
 
         void destroy();
-        void construct(char* b, char* e);
+        void construct(const char* b, const char* e);
 };
 
 Str operator+(const Str& s, const Str& t);
@@ -100,7 +117,7 @@ void Str::destroy() {
     tail = 0;
 }
 
-void Str::construct(char* b, char* e) {
+void Str::construct(const char* b, const char* e) {
     size_t new_size = e - b;
     data = new char[new_size];
     std::copy(b, e, data);

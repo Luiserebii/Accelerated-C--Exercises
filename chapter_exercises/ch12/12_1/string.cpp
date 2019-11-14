@@ -17,7 +17,10 @@ istream& operator>>(istream& is, Str& s) {
     if(is) {
         do {
             //This part is tricky...
-            s.data.push_back(c);
+            //Relying on an added += implementation
+            //This is not the most efficient way of doing things, but, well...
+            //let's see if it works!
+            s += c;
         } while(is.get(c) && !isspace(c));
     
         //If we've read whitespace, place it back on the stream - unget
