@@ -3,6 +3,7 @@
 
 using std::cout;
 using std::endl;
+using std::cin;
 
 int main() {
 
@@ -15,4 +16,7 @@ int main() {
     n += "uguu~";
     cout << n << endl;
 
+    Str m;
+    cin >> m;
+    cout << m << endl;
 }
