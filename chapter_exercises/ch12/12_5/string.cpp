@@ -51,7 +51,10 @@ Str operator+(const char* s, const Str& t) {
 }
 
 Str operator+(const Str& s, const char* t) {
+    std::cout << "AHHH FUCK" << std::endl;
     Str r = s;
+    std::cout << "A: " << r << std::endl;
+    std::cout << "B: " << r.c_str() << std::endl;
     r += t;
     return r;
 }
