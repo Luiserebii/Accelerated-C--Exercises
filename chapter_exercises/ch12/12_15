@@ -1,0 +1,4 @@
+A: It shouldn't be possible to leave the stream in an invalid state, 
+since we're using is.get(); get() is guaranteed to always yield a character
+from the stream, unlike funneling values into variables, which do rely on 
+the type of input to work.
