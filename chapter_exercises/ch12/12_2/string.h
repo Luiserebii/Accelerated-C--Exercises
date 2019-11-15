@@ -60,7 +60,7 @@ class Str {
 
         //Functions
         template <class T>
-        copy(T p, size_t n) {
+        T copy(T p, size_t n) {
             if(n > size()) {
                 //Cut it down to entire bunch of chars
                 n = size();
@@ -68,6 +68,7 @@ class Str {
             for(size_t i = 0; i < n; ++i) {
                 *p++ = data[i];
             }
+            return p;
         }
 
     private:
