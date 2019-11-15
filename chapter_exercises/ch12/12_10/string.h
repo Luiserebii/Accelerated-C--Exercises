@@ -1,0 +1,113 @@
+#ifndef GUARD_String_h
+#define GUARD_String_h
+
+#include <algorithm>
+#include <cstring>
+#include <iostream>
+#include "vector.h"
+
+class Str {
+
+    friend std::istream& operator>>(std::istream& is, Str& s);
+    friend std::istream& getline(std::istream& is, Str& s);
+
+    public:
+        typedef Vec<char>::size_type size_type;
+        typedef Vec<char>::iterator iterator;
+        typedef Vec<char>::const_iterator const_iterator;
+
+        //Default constructor
+        Str(): cstr_raw(0) { }
+
+        //Create a Str containing n copies of c char
+        Str(size_type n, char c): data(n, c), cstr_raw(0) { updateCStr(); }
+
+        //Create a Str from a null-terminated array of char
+        Str(const char* cp): cstr_raw(0) {
+            std::copy(cp, cp + std::strlen(cp), std::back_inserter(data));
+            updateCStr();
+        }
+
+        //Create a Str from the range denoted by iterators b and e
+        template <class In>
+        Str(In b, In e): cstr_raw(0), data(b, e) {
+            updateCStr();
+        }
+
+        //Copy, assignment, destructor
+        Str(const Str&);
+        Str& operator=(const Str&);
+        ~Str();
+
+
+        //Operators
+        char& operator[](size_type i) { return data[i]; }
+        const char& operator[](size_type i) const { return data[i]; }
+
+        Str& operator+=(const Str& s) {
+            std::copy(s.data.begin(), s.data.end(), std::back_inserter(data));
+            updateCStr();
+            return *this;
+        }
+        Str& operator+=(const char* s) {
+            std::copy(s, s + std::strlen(s), std::back_inserter(data));
+            updateCStr();
+            return *this;
+        }
+
+        iterator begin() { return data.begin(); }
+        const_iterator begin() const { return data.begin(); }
+
+        iterator end() { return data.end(); }
+        const_iterator end() const { return data.end(); }
+
+        size_type size() const { return data.size(); }
+        char* c_str() const { return cstr_raw; }
+        //Online, it claims that accessing the final piece is undefined behavior;
+        //no guarantee that it will be null-terminated, and so I think we can
+        //get away with just returning our normal one
+        //
+        //Since I don't feel like going on a renaming spree, I'm just
+        //going to rename data() to data_impl()
+        char* data_impl() const { return cstr_raw; }
+
+        //Functions
+        template <class T>
+        T copy(T p, size_t n) {
+            if(n > size()) {
+                //Cut it down to entire bunch of chars
+                n = size();
+            }
+            for(size_t i = 0; i < n; ++i) {
+                *p++ = data[i];
+            }
+            return p;
+        }
+        
+    private:
+        Vec<char> data;
+        char* cstr_raw;
+
+        void createCStr(const char*);
+        void updateCStr();
+        void destroy();
+};
+
+Str operator+(const Str& s, const Str& t);
+Str operator+(const char* s, const Str& t);
+Str operator+(const Str& s, const char* t);
+
+//Relational operators
+bool operator<(const Str& a, const Str& b);
+bool operator>(const Str& a, const Str& b);
+bool operator<=(const Str& a, const Str& b);
+bool operator>=(const Str& a, const Str& b);
+
+//Equality
+bool operator==(const Str& a, const Str& b);
+bool operator!=(const Str& a, const Str& b);
+
+std::ostream& operator<<(std::ostream& os, const Str& s);
+
+
+#endif
