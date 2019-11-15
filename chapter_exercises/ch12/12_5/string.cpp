@@ -51,10 +51,7 @@ Str operator+(const char* s, const Str& t) {
 }
 
 Str operator+(const Str& s, const char* t) {
-    std::cout << "AHHH FUCK" << std::endl;
     Str r = s;
-    std::cout << "A: " << r << std::endl;
-    std::cout << "B: " << r.c_str() << std::endl;
     r += t;
     return r;
 }
@@ -117,7 +114,7 @@ void Str::createCStr(const char* c) {
     char* n = new char[sz];
     char* t = n;
     for(size_t i = 0; i < sz; ++i) {
-        *n++ = *c++;
+        *t++ = *c++;
     }
     //Set the internal c_str() to the copy
     cstr_raw = n;

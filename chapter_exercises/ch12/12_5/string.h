@@ -48,11 +48,8 @@ class Str {
             return *this;
         }
         Str& operator+=(const char* s) {
-            std::cout << "OWO" << std::endl;
             std::copy(s, s + std::strlen(s), std::back_inserter(data));
-            std::cout << "UWU" << std::endl;
             updateCStr();
-            std::cout << "uwo" << std::endl;
             return *this;
         }
 

@@ -13,5 +13,5 @@ int main() {
 
     //Just run these and see if they work
     cout << s + "uguu" << endl;
-   // cout << ("uguu" + s) << endl;
+    cout << "uguu" + s << endl;
 }  
