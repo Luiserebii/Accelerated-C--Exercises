@@ -50,6 +50,13 @@ class Str {
 
         size_type size() const { return data.size(); }
         char* c_str() const { return cstr_raw; }
+        //Online, it claims that accessing the final piece is undefined behavior;
+        //no guarantee that it will be null-terminated, and so I think we can
+        //get away with just returning our normal one
+        //
+        //Since I don't feel like going on a renaming spree, I'm just
+        //going to rename data() to data_impl()
+        char* data_impl() const { return cstr_raw; }
 
     private:
         Vec<char> data;
