@@ -44,6 +44,18 @@ Str operator+(const Str& s, const Str& t) {
     return r;
 }
 
+Str operator+(const char* s, const Str& t) {
+    Str r = t;
+    r += s;
+    return r;
+}
+
+Str operator+(const Str& s, const char* t) {
+    Str r = s;
+    r += t;
+    return r;
+}
+
 //Relational operators
 bool operator<(const Str& a, const Str& b) {
     return strcmp(a.c_str(), b.c_str()) < 0;
