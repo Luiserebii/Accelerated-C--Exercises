@@ -58,6 +58,18 @@ class Str {
         //going to rename data() to data_impl()
         char* data_impl() const { return cstr_raw; }
 
+        //Functions
+        template <class T>
+        copy(T p, size_t n) {
+            if(n > size()) {
+                //Cut it down to entire bunch of chars
+                n = size();
+            }
+            for(size_t i = 0; i < n; ++i) {
+                *p++ = data[i];
+            }
+        }
+
     private:
         Vec<char> data;
         char* cstr_raw;
