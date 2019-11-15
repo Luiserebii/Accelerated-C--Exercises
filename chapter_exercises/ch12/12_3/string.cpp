@@ -6,6 +6,8 @@ using std::istream;
 using std::ostream;
 using std::strcmp;
 
+
+//Stream operators
 istream& operator>>(istream& is, Str& s) {
 
     //Obliterate existing value(s)
@@ -35,7 +37,7 @@ ostream& operator<<(ostream& os, const Str& s) {
     return os;
 }
 
-
+//Addition
 Str operator+(const Str& s, const Str& t) {
     Str r = s;
     r += t;
