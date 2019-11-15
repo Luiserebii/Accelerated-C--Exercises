@@ -34,7 +34,7 @@ class Str {
 
         //Copy, assignment, destructor
         Str(const Str&);
-        operator=(const Str&);
+        Str& operator=(const Str&);
         ~Str();
 
 
@@ -49,13 +49,13 @@ class Str {
         }
 
         size_type size() const { return data.size(); }
-        char* c_str() { return cstr_raw; }
+        char* c_str() const { return cstr_raw; }
 
     private:
         Vec<char> data;
         char* cstr_raw;
 
-        void createCStr(const Str&);
+        void createCStr(const char*);
         void updateCStr();
         void destroy();
 };

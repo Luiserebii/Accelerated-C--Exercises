@@ -39,7 +39,7 @@ Str::Str(const Str& s) {
     createCStr(s.c_str());
 }
 
-Str::operator=(const Str& s) {
+Str& Str::operator=(const Str& s) {
     //Check for self-assignment
     if(&s != this) {
         destroy();
@@ -84,6 +84,6 @@ void Str::updateCStr() {
     cstr_raw = n;
 }
 
-void destroy() {
+void Str::destroy() {
     delete[] cstr_raw;
 }
