@@ -16,7 +16,7 @@ A collection of exercises I am completing to study C++ from the book: "Accelerat
 | **Ch. 9:** Defining new types | :heavy_check_mark: |
 | **Ch. 10:** Managing memory and low-level data structures | :heavy_check_mark: |
 | **Ch. 11:** Defining abstract data types | :heavy_check_mark: |
-| **Ch. 12:** Making class objects act like values |  |
+| **Ch. 12:** Making class objects act like values | :heavy_check_mark: |
 | **Ch. 13:** Using inheritance and dynamic binding |  |
 | **Ch. 14:** Managing memory (almost) automatically |  |
 | **Ch. 15:** Revisiting character pictures |  |
