@@ -1,3 +1,6 @@
+#ifndef GUARD_VECTOR_H
+#define GUARD_VECTOR_H
+
 #include <memory>
 #include <cstdlib>
 #include <stdexcept>
@@ -25,7 +28,7 @@ class Vec {
         explicit Vec(std::size_t n, const T& val=T()) { create(n, val); }
 
         template <class I>
-        Vec(I b, I end);
+        Vec(I b, I e) { create(b, e); }
 
         //Copy, assignment, destructor
         Vec(const Vec& v) { create(v.begin(), v.end()); }
@@ -80,13 +83,6 @@ class Vec {
         void unchecked_append(const T&);
 
 };
-
-template <class T, class I>
-Vec<T>::Vec<T>(I b, I end) {
-    while(b != end) {
-        push_back(*b++);
-    }
-}
 
 template<class T>
 Vec<T>& Vec<T>::operator=(const Vec& rhs) {
@@ -191,3 +187,5 @@ template <class T>
 void Vec<T>::clear() {
     uncreate();
 }
+
+#endif
