@@ -1,6 +1,7 @@
 #include <iostream>
 #include "string.h"
 
+using std::cin;
 using std::cout;
 using std::endl;
 using std::boolalpha;
@@ -11,8 +12,7 @@ int main() {
     cout << "s value: " << s << endl;
     cout << "c_str(): " << s.c_str() << endl;
 
-    Str::iterator i = s.begin();
-    while(i != s.end()) {
-        cout << *i++ << endl;
-    }
+    Str test;
+    getline(cin, test);
+    cout << test << endl;
 }  
