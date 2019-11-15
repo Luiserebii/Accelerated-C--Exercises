@@ -17,17 +17,17 @@ class Str {
         Str(): cstr_raw(0) { }
 
         //Create a Str containing n copies of c char
-        Str(size_type n, char c): data(n, c) { updateCStr(); }
+        Str(size_type n, char c): data(n, c), cstr_raw(0) { updateCStr(); }
 
         //Create a Str from a null-terminated array of char
-        Str(const char* cp) {
+        Str(const char* cp): cstr_raw(0) {
             std::copy(cp, cp + std::strlen(cp), std::back_inserter(data));
             updateCStr();
         }
 
         //Create a Str from the range denoted by iterators b and e
         template <class In>
-        Str(In b, In e) {
+        Str(In b, In e): cstr_raw(0) {
             std::copy(b, e, std::back_inserter(data));
             updateCStr();
         }

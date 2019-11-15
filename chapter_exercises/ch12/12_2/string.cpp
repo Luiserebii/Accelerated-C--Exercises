@@ -33,6 +33,7 @@ Str operator+(const Str& s, const Str& t) {
 
 void Str::updateCStr() {
     if(cstr_raw != 0) {
+        std::cout <
         delete[] cstr_raw;
     }
     char* n = new char[data.size() + 1]; //1 extra for the null termination
@@ -45,5 +46,5 @@ void Str::updateCStr() {
     //Set the null character
     *t = '\0';
     //Finally, set the str;
-    cstr_raw = t;
+    cstr_raw = n;
 }
