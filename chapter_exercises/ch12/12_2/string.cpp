@@ -33,11 +33,17 @@ Str operator+(const Str& s, const Str& t) {
 
 void Str::updateCStr() {
     if(cstr_raw != 0) {
-        delete[] str_raw
+        delete[] cstr_raw;
     }
-    char*
+    char* n = new char[data.size() + 1]; //1 extra for the null termination
+    //Temporary pointer
+    char* t = n;
     Vec<char>::iterator i = data.begin();
     while(i != data.end()) {
-        
+        *t++ = *i++;
     }
+    //Set the null character
+    *t = '\0';
+    //Finally, set the str;
+    cstr_raw = t;
 }
