@@ -14,20 +14,22 @@ class Str {
         typedef Vec<char>::size_type size_type;
 
         //Default constructor
-        Str() { }
+        Str(): cstr_raw(0) { }
 
         //Create a Str containing n copies of c char
-        Str(size_type n, char c): data(n, c) { }
+        Str(size_type n, char c): data(n, c) { updateCStr(); }
 
         //Create a Str from a null-terminated array of char
         Str(const char* cp) {
             std::copy(cp, cp + std::strlen(cp), std::back_inserter(data));
+            updateCStr();
         }
 
         //Create a Str from the range denoted by iterators b and e
         template <class In>
         Str(In b, In e) {
             std::copy(b, e, std::back_inserter(data));
+            updateCStr();
         }
 
         //Operators
@@ -36,6 +38,7 @@ class Str {
 
         Str& operator+=(const Str& s) {
             std::copy(s.data.begin(), s.data.end(), std::back_inserter(data));
+            updateCStr();
             return *this;
         }
 
@@ -58,5 +61,6 @@ std::ostream& operator<<(std::ostream& os, const Str& s) {
     }
     return os;
 }
+
 
 #endif
