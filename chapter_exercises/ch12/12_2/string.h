@@ -32,6 +32,12 @@ class Str {
             updateCStr();
         }
 
+        //Copy, assignment, destructor
+        Str(const Str&);
+        operator=(const Str&);
+        ~Str();
+
+
         //Operators
         char& operator[](size_type i) { return data[i]; }
         const char& operator[](size_type i) const { return data[i]; }
@@ -49,7 +55,9 @@ class Str {
         Vec<char> data;
         char* cstr_raw;
 
+        void createCStr(const Str&);
         void updateCStr();
+        void destroy();
 };
 
 Str operator+(const Str& s, const Str& t);

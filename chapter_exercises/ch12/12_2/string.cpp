@@ -31,9 +31,44 @@ Str operator+(const Str& s, const Str& t) {
     return r;
 }
 
+
+//Copy, assignment, destructor
+Str::Str(const Str& s) {
+    //Relying on data's implemented assignment
+    data = s.data;
+    createCStr(s.c_str());
+}
+
+Str::operator=(const Str& s) {
+    //Check for self-assignment
+    if(&s != this) {
+        destroy();
+        data = s.data;
+        createCStr(s.c_str());
+    }
+    return *this;
+}
+
+Str::~Str() {
+    //Supposedly, class members with defined destructors will be automatically
+    //called after the manual destructor code
+    destroy();
+}
+
+void Str::createCStr(const char* c) {
+    //Create the c_str, now...
+    size_t sz = strlen(c) + 1; //1 extra for the null termination
+    char* n = new char[sz];
+    char* t = n;
+    for(size_t i = 0; i < sz; ++i) {
+        *n++ = *c++;
+    }
+    //Set the internal c_str() to the copy
+    cstr_raw = n;
+}
+
 void Str::updateCStr() {
     if(cstr_raw != 0) {
-        std::cout <
         delete[] cstr_raw;
     }
     char* n = new char[data.size() + 1]; //1 extra for the null termination
@@ -47,4 +82,8 @@ void Str::updateCStr() {
     *t = '\0';
     //Finally, set the str;
     cstr_raw = n;
+}
+
+void destroy() {
+    delete[] cstr_raw;
 }
